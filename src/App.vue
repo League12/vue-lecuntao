@@ -1,29 +1,60 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <router-view></router-view>
+    <footerbar></footerbar>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
+<script>
+
+  import axios from 'axios';
+  import footerbar from './views/Footerbar';
+
+  export default {
+    // mounted () {
+    //   axios.get("/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562315736581&act=goods&op=hotWord").then(res => {
+    //
+    //     console.log(res)
+    //
+    //   })
+    // },
+
+    components: {
+      footerbar,
     }
+
+
   }
-}
+
+</script>
+
+<style lang="scss">
+
+  body,h1,h2,h3,h4,h5,h6,ul,ol,li,dd,dt,p,a,span,input,select,button,header,footer,nav,aside,article,main,figure
+  ,figcaption,i {padding: 0;margin: 0;}
+
+  html,body {
+    height: 100%;
+  }
+
+  html {
+    font-size: 100px;
+  }
+
+  body {
+    font-size: 16px;
+    font-family: "微软雅黑";
+    color: #333;
+  }
+
+  ul,ol {
+    list-style: none;
+  }
+
+  input,select,button {
+    outline: none;
+  }
+
+
+
 </style>
