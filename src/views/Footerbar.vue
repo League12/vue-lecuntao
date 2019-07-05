@@ -18,10 +18,11 @@
   div.footerbar {
     height: .5rem;
     width: 100%;
-    background-color: orangered;
+    background-color: white;
     position: fixed;
     bottom: 0;
     left: 0;
+    border-top: 1px solid #ccc;
     ul {
       height: 100%;
       width: 100%;
@@ -30,6 +31,11 @@
       align-items: center;
       li {
         flex: 1;
+        height: 100%;
+        line-height: .5rem;
+        text-align: center;
+        font-size: .1rem;
+        color: #333;
       }
     }
   }
