@@ -10,7 +10,7 @@
     </nav>
     <aside>
       <ul :key="asidelist.length">
-        <li v-for="data in asidelist" @click="handleAsideClick()">
+        <li v-for="data in asidelist" @click="handleAsideClick(data.gc_id, data.gc_name)">
           <img :src="data.cate_img" alt="">
           <p>{{ data.gc_name }}</p>
         </li>
@@ -62,8 +62,8 @@
           this.asidelist = res.data.datas;
         });
       },
-      handleAsideClick() {
-
+      handleAsideClick(gcid, gcname) {
+        this.$router.push({path: `/selectedlist/${JSON.stringify({gcid, gcname})}`});
       }
     }
   }
@@ -108,6 +108,7 @@
           width: 33.33%;
           height: 1.27rem;
           img {
+            display: block;
             width: 100%;
           }
 

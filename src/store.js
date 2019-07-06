@@ -5,10 +5,12 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-
+    isHiddenFooterbar: true
   },
   mutations: {
-
+    toggleFooterbar: function (state, data) {
+      state.isHiddenFooterbar = data;
+    }
   },
   actions: {
 

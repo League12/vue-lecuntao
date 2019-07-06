@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <router-view></router-view>
-    <footerbar></footerbar>
+    <footerbar v-if="this.$store.state.isHiddenFooterbar"></footerbar>
   </div>
 </template>
 
@@ -45,6 +45,7 @@
     font-size: 16px;
     font-family: "微软雅黑";
     color: #333;
+    overflow: hidden;
   }
 
   ul,ol {

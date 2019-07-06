@@ -6,6 +6,7 @@ import shopcar from './views/Shopcar'
 import person from './views/Person'
 import goodsdetail from "./views/Goodsdetail"
 import search from './views/Search'
+import selectedlist from './views/goodslist/selectedlist'
 
 Vue.use(Router)
 
@@ -29,7 +30,7 @@ export default new Router({
       component: person
     },
     {
-      path: "/goodsdetail",
+      path: "/goodsdetail/:gcid",
       component: goodsdetail
     },
     {
@@ -39,6 +40,10 @@ export default new Router({
     {
       path: "*",
       component: home
+    },
+    {
+      path: "/selectedlist/:list",
+      component: selectedlist
     }
   ]
 })
