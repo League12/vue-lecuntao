@@ -45,7 +45,6 @@
     font-size: 16px;
     font-family: "微软雅黑";
     color: #333;
-    overflow: hidden;
   }
 
   ul,ol {

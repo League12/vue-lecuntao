@@ -21,7 +21,10 @@
 
 
     <main>
-      <ul>
+      <ul v-infinite-scroll="loadMore"
+          infinite-scroll-disabled="loading"
+          infinite-scroll-immediate-check="false"
+          infinite-scroll-distance="10">
         <li v-for="(goods, index) in goodslist" :key="index" @click="handleMainClick(goods.goods_id)">
           <img :src="goods.goods_image" alt="">
           <div>
@@ -42,8 +45,12 @@
 
 <script>
 
+  import Vue from 'vue';
   import axios from 'axios';
   import pricesort from './Pricesort';
+  import { InfiniteScroll } from 'mint-ui';
+
+  Vue.use(InfiniteScroll);
 
   export default {
 
@@ -54,7 +61,8 @@
         prisort: 0,
         sort: 4,
         page: 1,
-        sequence: 0
+        sequence: 0,
+        loading: false
       }
     },
 
@@ -68,6 +76,15 @@
     },
 
     methods: {
+
+      loadMore() {
+        axios({
+          url: `/lct?provinc=110&city=110100000000&keyword=&page=${this.page++}&sorted=${this.sort}&sequence=${this.sequence}&gcId=${JSON.parse(this.$route.params.list).gcid}&workshop=api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562373149571&act=goods&op=goodsList`
+        }).then(res => {
+          this.goodslist = [...this.goodslist, ...res.data.datas.list];
+        });
+      },
+
       handleNavClick(cur) {
         this.navcurrent = cur;
         switch (cur) {
