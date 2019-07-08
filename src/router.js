@@ -8,6 +8,7 @@ import goodsdetail from './views/Goodsdetail'
 import search from './views/Search'
 import location from './views/location'
 import city from './views/city'
+import selectedlist from './views/goodslist/selectedlist'
 
 Vue.use(Router)
 
@@ -32,6 +33,7 @@ export default new Router({
     },
     {
       path: '/goodsdetail',
+      path: "/goodsdetail/:gcid",
       component: goodsdetail
     },
     {
@@ -51,6 +53,10 @@ export default new Router({
     {
       path: '*',
       redirect: '/home'
+    },
+    {
+      path: "/selectedlist/:list",
+      component: selectedlist
     }
   ]
 })
