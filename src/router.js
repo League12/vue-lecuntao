@@ -39,7 +39,7 @@ export default new Router({
     },
     {
       path: "*",
-      component: home
+      redirect: "/home"
     },
     {
       path: "/selectedlist/:list",
