@@ -275,7 +275,6 @@ export default {
           background-color: white;
           margin-top: .04rem;
 
-
           img {
             width: 100%;
             height: 1.6rem;

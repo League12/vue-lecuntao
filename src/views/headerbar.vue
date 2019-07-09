@@ -54,6 +54,9 @@ export default {
     #go{
         background:rgb(248, 18, 52);
     }
+    *{
+      box-sizing: border-box;
+    }
     .header{
         height: .4rem;
         width: 100%;
@@ -102,12 +105,13 @@ export default {
             background-position: .1rem .07rem;
             &>input{
                 width:2.1rem;
-                height:.3rem;
+                height:.28rem;
                 border:none;
                 outline: none;
                 background: #fff;
                 position: absolute;
                 left:.32rem;
+                top:.01rem;;
             }
         }
     }

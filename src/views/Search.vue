@@ -33,14 +33,14 @@ export default {
     return {
       searchChoose: true,
       leixing: true,
-      searchText:""
+      searchText: ''
     }
   },
   methods: {
     searchCho () {
       if (this.searchChoose === true) {
         this.searchChoose = false
-      }else{
+      } else {
         this.searchChoose = true
       }
     },
@@ -52,24 +52,24 @@ export default {
       this.leixing = false
       this.searchChoose = false
     },
-    deleteText(){
-      this.searchText = ""
+    deleteText () {
+      this.searchText = ''
     },
-    goback(){
+    goback () {
       this.$router.push('/home')
     },
-    goSearch(){
+    goSearch () {
       this.$router.push('/searchResult')
       console.log(this.searchText)
       localStorage.setItem('searchResult', `${this.searchText}`)
     }
   },
-   mounted () {
+  mounted () {
     this.$store.state.isHiddenFooterbar = false
-   },
-   destroyed () {
+  },
+  destroyed () {
     this.$store.state.isHiddenFooterbar = true
-  } 
+  }
 }
 </script>
 

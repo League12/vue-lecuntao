@@ -56,49 +56,48 @@
 
 <script>
 
-  import axios from "axios";
-  import detailheader from './goodsDetail/detailheader';
-  import recommand4you from './goodsDetail/Recommand4you';
-  import goodsdetailfooter from './goodsDetail/Detailfooter';
+import axios from 'axios'
+import detailheader from './goodsDetail/detailheader'
+import recommand4you from './goodsDetail/Recommand4you'
+import goodsdetailfooter from './goodsDetail/Detailfooter'
 
-  export default {
+export default {
 
-    data() {
-      return {
-        datalist: null
-      }
-    },
-
-    mounted() {
-      this.$store.state.isHiddenFooterbar = false;
-        axios({
-          url : `/test.json`,
-          methods: "get",
-        }).then(res => {
-          this.datalist = res.data[this.getRandom(0, 10)].datas;
-        });
-      //   location.assign(`https://m.lecuntao.com/tpl/goods/index.html?goods_id=${this.$route.params.gcid}`);
-      },
-
-
-    destroyed () {
-      this.$store.state.isHiddenFooterbar = true
-    },
-
-    components: {
-      detailheader,
-      recommand4you,
-      goodsdetailfooter
-    },
-
-    methods: {
-      getRandom(min, max) {
-        return Math.floor(Math.random() * (max - min) + min)
-      }
+  data () {
+    return {
+      datalist: null
     }
+  },
 
+  mounted () {
+    this.$store.state.isHiddenFooterbar = false
+    axios({
+      url: `/test.json`,
+      methods: 'get'
+    }).then(res => {
+      this.datalist = res.data[this.getRandom(0, 10)].datas
+    })
+    //   location.assign(`https://m.lecuntao.com/tpl/goods/index.html?goods_id=${this.$route.params.gcid}`);
+  },
+
+  destroyed () {
+    this.$store.state.isHiddenFooterbar = true
+  },
+
+  components: {
+    detailheader,
+    recommand4you,
+    goodsdetailfooter
+  },
+
+  methods: {
+    getRandom (min, max) {
+      return Math.floor(Math.random() * (max - min) + min)
+    }
   }
-  
+
+}
+
 </script>
 
 <style lang="scss" scoped>
@@ -257,7 +256,6 @@
         }
       }
     }
-
 
   }
 </style>

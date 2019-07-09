@@ -14,29 +14,28 @@
 
 <script>
 
-  import axios from 'axios';
+import axios from 'axios'
 
+export default {
 
-  export default {
-
-    data() {
-      return {
-        datalist:[]
-      }
-    },
-
-    computed: {
-      selectData() {
-        return this.datalist.filter((data, index) => index < 6);
-      }
-    },
-
-    mounted () {
-      axios.get("/test.json").then(res => {
-        this.datalist = res.data
-      });
+  data () {
+    return {
+      datalist: []
     }
+  },
+
+  computed: {
+    selectData () {
+      return this.datalist.filter((data, index) => index < 6)
+    }
+  },
+
+  mounted () {
+    axios.get('/test.json').then(res => {
+      this.datalist = res.data
+    })
   }
+}
 </script>
 
 <style lang="scss" scoped>

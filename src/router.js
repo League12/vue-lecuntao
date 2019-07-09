@@ -33,7 +33,6 @@ export default new Router({
       component: person
     },
     {
-      path: '/goodsdetail',
       path: '/goodsdetail/:gcid',
       component: goodsdetail
     },
