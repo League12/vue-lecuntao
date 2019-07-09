@@ -11,16 +11,15 @@
 
 <script>
 
-  export default {
-    props: ["mysort"],
+export default {
+  props: ['mysort'],
 
-    data() {
-      return {
-        current: 0
-      }
-    },
+  data () {
+    return {
+      current: 0
+    }
   }
-
+}
 
 </script>
 

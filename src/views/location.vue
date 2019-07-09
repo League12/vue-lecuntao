@@ -21,6 +21,7 @@ export default {
     }
   },
   mounted () {
+    this.$store.state.isHiddenFooterbar = false
     axios.get('/lct?region=province_name&api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562550203706&act=Address&op=get_region/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562550203706&act=Address&op=get_region').then(
       res => {
         this.datalist = res.data.datas
@@ -35,6 +36,9 @@ export default {
     backClick () {
       this.$router.push('/home')
     }
+  },
+  destroyed () {
+    this.$store.state.isHiddenFooterbar = true
   }
 }
 </script>

@@ -9,7 +9,7 @@ export default new Vuex.Store({
   },
   mutations: {
     toggleFooterbar: function (state, data) {
-      state.isHiddenFooterbar = data;
+      state.isHiddenFooterbar = data
     }
   },
   actions: {

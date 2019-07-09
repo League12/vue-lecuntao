@@ -7,22 +7,19 @@
 
 <script>
 
-  import glhead from './goodslist/goodslisthead';
-  import gllist from './goodslist/gllist'
+import glhead from './goodslist/goodslisthead'
+import gllist from './goodslist/gllist'
 
-  export default {
+export default {
 
-    components: {
-      glhead,
-      gllist
-    }
+  components: {
+    glhead,
+    gllist
   }
-
-
+}
 
 </script>
 
 <style lang="scss" scoped>
-
 
 </style>
