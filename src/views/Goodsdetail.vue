@@ -30,12 +30,12 @@
       <span>></span>
     </div>
 
-    <div class="shop">
+    <div class="shop" id="a2">
       <img src="/imgs/league/default_store_logo.gif" alt="">
       <p>{{ datalist.goods_info.store_name }}</p>
     </div>
 
-    <div class="pic-detail" id="a2">
+    <div class="pic-detail">
       <p>
         查看图文详情
       </p>

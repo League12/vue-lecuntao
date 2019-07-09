@@ -66,13 +66,7 @@
       handleMaskClick() {
         this.$store.state.isHiddenAddshopcar = false
       },
-
-
-
     }
-
-
-
   }
 
 </script>
@@ -164,6 +158,7 @@
 
           p:nth-of-type(3) {
             line-height: .17rem;
+            height: .34rem;
             font-size: .12rem;
             color: #333;
             padding-right: .1rem;
