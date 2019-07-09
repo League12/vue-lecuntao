@@ -11,6 +11,7 @@
       <le></le>
       <tese></tese>
       <category></category>
+      <hoot></hoot>
 
     </div>
   </div>
@@ -24,6 +25,7 @@ import navswiper from '@/views/Home/navSwiper'
 import le from '@/views/Home/le6'
 import tese from '@/views/Home/tese'
 import category from '@/views/Home/category'
+import hoot from '@/views/Home/hoot'
 export default {
   data () {
     return {
@@ -37,7 +39,8 @@ export default {
     navswiper,
     le,
     tese,
-    category
+    category,
+    hoot
   },
   mounted () {
     axios({
@@ -58,6 +61,7 @@ export default {
   height: 100%;
   position: relative;
   margin-bottom: 50px;
+  overflow: hidden;
 }
 .header {
   display: flex;

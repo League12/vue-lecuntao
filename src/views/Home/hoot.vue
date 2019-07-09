@@ -1,10 +1,10 @@
 <template>
-  <div >
-    <div class="elect" >
+  <div>
+    <div class="elect">
       <p>电器城</p>
       <p>
         更多
-        <img src="../../../imgs/icon_more.png" alt />
+        <!-- <img src="../../../imgs/icon_more.png" alt /> -->
       </p>
     </div>
     <ul class="goods">
@@ -19,30 +19,45 @@
   </div>
 </template>
 <script>
-import axios from 'axios'
+import axios from "axios";
 export default {
-  data () {
+  data() {
     return {
       datalist: []
-    }
+    };
   },
-  mounted () {
+
+  //   provinc=140&city=140100000000&page=1&pageSize=10
+  //   provinc=140&city=140100000000&page=2&pageSize=10
+  // https://mobileway.lecuntao.com/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562674208373&act=goods&op=goodsRecom_new
+  // https://mobileway.lecuntao.com/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562674208373&act=goods&op=goodsRecom_new
+  // http://localhost:8080/lct?provinc=140&city=140100000000&page=2&pageSize=10&api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562674208373&act=goods&op=goodsRecom_new
+
+  mounted() {
     axios({
+      method: "post",
       url:
-        '/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562586783511&act=index&op=index&key='
+        "lct?provinc=140&city=140100000000&page=2&pageSize=10&api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562674208373&act=goods&op=goodsRecom_new",
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
     }).then(res => {
-      this.datalist = res.data.datas.category_goods[0].goods_list
-    })
+      console.log(res.data);
+      //     console.log(res.data.datas.list)
+      this.datalist = res.data.datas.list;
+    });
+
+    
   }
-}
+};
 </script>
 <style lang="scss" scoped>
 .elect {
   width: 100%;
   height: 0.35rem;
   background: #f0f0f0;
-  line-height: .35rem;
-  margin-top: .48rem;
+  line-height: 0.35rem;
+  margin-top: 0.48rem;
   p:nth-of-type(1) {
     float: left;
     padding-left: 5px;
@@ -138,9 +153,5 @@ export default {
     }
   }
 }
-.float{
-    height: 0;
-    clear: both;
-}
-
 </style>
+

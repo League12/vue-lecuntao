@@ -19,14 +19,10 @@ export default {
       isHiddenBacktop: false
     }
   },
+  
 
   mounted () {
     let that = this
-    // axios.get("/lct?city_id=110100000000&province_id=110&goods_id=625504&key=abfd9b8b53c8f50a6d03f3644c8830c8api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562395021361&act=mobile_goods_detail&op=getGoodsInfo").then(res => {
-    //
-    //   console.log(res)
-    //
-    // })
     window.onscroll = function () {
       let scrollTop = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop
       if (scrollTop >= 2000) {
