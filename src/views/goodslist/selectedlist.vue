@@ -279,6 +279,7 @@
           background-color: white;
           margin-top: .04rem;
 
+
           img {
             width: 100%;
             height: 1.6rem;
@@ -293,6 +294,12 @@
             overflow: hidden;
             font-weight: 100;
             padding: .06rem .09rem 0;
+            text-overflow: -o-ellipsis-lastline;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
           }
 
           p {
