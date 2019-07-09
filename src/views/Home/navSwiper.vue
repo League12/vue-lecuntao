@@ -20,24 +20,24 @@
   </div>
 </template>
 <script>
-import Vue from "vue";
-import Swiper from "swiper"; // js
-import "swiper/dist/css/swiper.css";
+import Vue from 'vue'
+import Swiper from 'swiper' // js
+import 'swiper/dist/css/swiper.css'
 
-import { Swipe, SwipeItem } from "mint-ui";
+import { Swipe, SwipeItem } from 'mint-ui'
 
-Vue.component(Swipe.name, Swipe);
-Vue.component(SwipeItem.name, SwipeItem);
+Vue.component(Swipe.name, Swipe)
+Vue.component(SwipeItem.name, SwipeItem)
 export default {
-  mounted() {
-      var swiper = new Swiper('.s2', {
+  mounted () {
+    var swiper = new Swiper('.s2', {
       slidesPerView: 4.7,
       spaceBetween: 30,
-      freeMode: true,
-      
-    });
+      freeMode: true
+
+    })
   }
-};
+}
 </script>
 <style lang="scss" scoped>
 .swiper-container {

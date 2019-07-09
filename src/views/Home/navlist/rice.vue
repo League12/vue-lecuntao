@@ -18,24 +18,24 @@
   </div>
 </template>
 <script>
-import axios from "axios";
+import axios from 'axios'
 export default {
-  data() {
+  data () {
     return {
       datalist: []
-    };
+    }
   },
-  mounted() {
+  mounted () {
     axios({
       url:
-        "/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562586783511&act=index&op=index&key="
+        '/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562586783511&act=index&op=index&key='
     }).then(res => {
     //   console.log(res.data.datas.category_goods[1]);
-      this.datalist = res.data.datas.category_goods[2].goods_list;
+      this.datalist = res.data.datas.category_goods[2].goods_list
     //   console.log(this.datalist);
-    });
+    })
   }
-};
+}
 </script>
 <style lang="scss" scoped>
 .elect {

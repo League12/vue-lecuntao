@@ -4,58 +4,58 @@
       <div class="swiper-wrapper nav">
         <div class="swiper-slide"  v-for="(data,index) in datalist"  :key="data.gc_id"  @click="handleClick(index)"  :class="(isActive === index) ? 'active' + index : ''" ref="mylist">
           <p>
-            <a href="rice">
+            <!-- <a :href="'#ann' + index"> -->
             <img :src="data.cate_image" alt />
             {{data.cate_name}}
-            </a>
+            <!-- </a> -->
           </p>
         </div>
       </div>
     </div>
-    
+
   </div>
 </template>
 <script>
-import axios from "axios";
-import Vue from "vue";
-import Swiper from "swiper";
-import "swiper/dist/css/swiper.css";
-import { Swipe, SwipeItem } from "mint-ui";
+import axios from 'axios'
+import Vue from 'vue'
+import Swiper from 'swiper'
+import 'swiper/dist/css/swiper.css'
+import { Swipe, SwipeItem } from 'mint-ui'
 
 export default {
-  data() {
+  data () {
     return {
       datalist: [],
-      isActive: 0,
-    };
+      isActive: 0
+    }
   },
 
-  mounted() {
+  mounted () {
     axios({
       url:
-        "/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562577964385&act=index&op=index&key="
+        '/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562577964385&act=index&op=index&key='
     }).then(res => {
       //   console.log(res.data);
-      this.datalist = res.data.datas.category;
+      this.datalist = res.data.datas.category
       //   console.log(this.datalist);
       this.$nextTick(() => {
-        var swiper = new Swiper(".navlist", {
+        var swiper = new Swiper('.navlist', {
           slidesPerView: 5,
           spaceBetween: 0,
           freeMode: true
-        });
-      });
-    });
+        })
+      })
+    })
   },
-  
+
   methods: {
-    handleClick(index) {
-      this.isActive = index;
+    handleClick (index) {
+      this.isActive = index
       // console.log(this.$refs.mylist[0].offsetTop);
-    },
-   
+    }
+
   }
-};
+}
 </script>
 <style lang="scss" scoped>
 .nav {
@@ -111,5 +111,3 @@ export default {
   z-index: 10;
 }
 </style>
-
-

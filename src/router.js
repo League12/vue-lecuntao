@@ -33,7 +33,7 @@ export default new Router({
     },
     {
       path: '/goodsdetail',
-      path: "/goodsdetail/:gcid",
+      path: '/goodsdetail/:gcid',
       component: goodsdetail
     },
     {
@@ -55,7 +55,7 @@ export default new Router({
       redirect: '/home'
     },
     {
-      path: "/selectedlist/:list",
+      path: '/selectedlist/:list',
       component: selectedlist
     }
   ]

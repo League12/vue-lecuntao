@@ -21,44 +21,44 @@
   </div>
 </template>
 <script>
-import axios from "axios";
-import Vue from "vue";
-import Swiper from "swiper";
-import "swiper/dist/css/swiper.css";
-import { Swipe, SwipeItem } from "mint-ui";
+import axios from 'axios'
+import Vue from 'vue'
+import Swiper from 'swiper'
+import 'swiper/dist/css/swiper.css'
+import { Swipe, SwipeItem } from 'mint-ui'
 
-Vue.component(Swipe.name, Swipe);
-Vue.component(SwipeItem.name, SwipeItem);
+Vue.component(Swipe.name, Swipe)
+Vue.component(SwipeItem.name, SwipeItem)
 
 export default {
-  data() {
+  data () {
     return {
       url: [],
       list: []
-    };
+    }
   },
-  mounted() {
-    axios({ url: "/resource/images/index/imgLe6Ji.png?lv=121fc80180" }).then(
+  mounted () {
+    axios({ url: '/resource/images/index/imgLe6Ji.png?lv=121fc80180' }).then(
       res => {
-        this.url = res.data;
+        this.url = res.data
       }
-    );
+    )
     axios({
       url:
-        "/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562563317957&act=index&op=index&key="
+        '/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562563317957&act=index&op=index&key='
     }).then(res => {
-      this.list = res.data.datas.le6ji.recommend_goods;
+      this.list = res.data.datas.le6ji.recommend_goods
       // console.log(this.list);
       this.$nextTick(() => {
-        var swiper = new Swiper(".s1", {
+        var swiper = new Swiper('.s1', {
           slidesPerView: 3,
           spaceBetween: 30,
-          freeMode: true,
-        });
-      });
-    });
+          freeMode: true
+        })
+      })
+    })
   }
-};
+}
 </script>
 <style lang="scss" scoped>
 .le66 {
@@ -105,6 +105,3 @@ export default {
   }
 }
 </style>
-
-
-

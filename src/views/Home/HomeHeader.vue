@@ -12,4 +12,3 @@ div{
     width: 100%;
 }
 </style>
-

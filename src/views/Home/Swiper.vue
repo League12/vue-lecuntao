@@ -8,17 +8,17 @@
   </div>
 </template>
 <script>
-import Vue from "vue";
-import Swiper from "swiper"; // js
-import "swiper/dist/css/swiper.css";
+import Vue from 'vue'
+import Swiper from 'swiper' // js
+import 'swiper/dist/css/swiper.css'
 
-import { Swipe, SwipeItem } from "mint-ui";
+import { Swipe, SwipeItem } from 'mint-ui'
 
-Vue.component(Swipe.name, Swipe);
-Vue.component(SwipeItem.name, SwipeItem);
+Vue.component(Swipe.name, Swipe)
+Vue.component(SwipeItem.name, SwipeItem)
 export default {
-  mounted() {
-    let sw = new Swiper(".filmswiper", {
+  mounted () {
+    let sw = new Swiper('.filmswiper', {
       // direction: 'vertical'
       loop: true,
       autoplay: {
@@ -26,15 +26,15 @@ export default {
       },
       // 如果需要分页器
       pagination: {
-        el: ".swiper-pagination"
+        el: '.swiper-pagination'
       }
-    });
+    })
     // console.log(sw);
-    if(sw.$wrapperEl.length === 1){
-        sw.autoplay.running = false
+    if (sw.$wrapperEl.length === 1) {
+      sw.autoplay.running = false
     }
   }
-};
+}
 </script>
 <style lang="scss" scoped>
 .swiper-wrapper {
@@ -46,4 +46,3 @@ export default {
   text-align: right;
 }
 </style>
-

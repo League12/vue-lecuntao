@@ -19,24 +19,22 @@
   </div>
 </template>
 <script>
-import axios from "axios";
+import axios from 'axios'
 export default {
-  data() {
+  data () {
     return {
       datalist: []
-    };
+    }
   },
-  mounted() {
+  mounted () {
     axios({
       url:
-        "/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562586783511&act=index&op=index&key="
+        '/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562586783511&act=index&op=index&key='
     }).then(res => {
-
-      this.datalist = res.data.datas.category_goods[0].goods_list;
-
-    });
+      this.datalist = res.data.datas.category_goods[0].goods_list
+    })
   }
-};
+}
 </script>
 <style lang="scss" scoped>
 .elect {
@@ -145,6 +143,3 @@ export default {
 }
 
 </style>
-
-
-
