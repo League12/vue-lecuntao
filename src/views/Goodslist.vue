@@ -12,11 +12,6 @@
 
   export default {
 
-
-
-
-
-
     components: {
       glhead,
       gllist
