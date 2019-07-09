@@ -11,13 +11,7 @@
   import footerbar from './views/Footerbar';
 
   export default {
-    // mounted () {
-    //   axios.get("/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562315736581&act=goods&op=hotWord").then(res => {
-    //
-    //     console.log(res)
-    //
-    //   })
-    // },
+    
 
     components: {
       footerbar,
