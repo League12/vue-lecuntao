@@ -5,7 +5,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    isHiddenFooterbar: true
+    isHiddenFooterbar: true,
+    isHiddenAddshopcar: false
   },
   mutations: {
     toggleFooterbar: function (state, data) {

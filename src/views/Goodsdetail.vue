@@ -51,6 +51,11 @@
 
     <goodsdetailfooter></goodsdetailfooter>
 
+    <transition name="fade" mode="in-out">
+      <addshopcar :mydata="datalist" v-if="$store.state.isHiddenAddshopcar"></addshopcar>
+    </transition>
+
+
   </div>
 </template>
 
@@ -60,6 +65,7 @@
   import detailheader from './goodsDetail/detailheader';
   import recommand4you from './goodsDetail/Recommand4you';
   import goodsdetailfooter from './goodsDetail/Detailfooter';
+  import addshopcar from './goodsDetail/Addshopcar';
 
   export default {
 
@@ -88,7 +94,8 @@
     components: {
       detailheader,
       recommand4you,
-      goodsdetailfooter
+      goodsdetailfooter,
+      addshopcar
     },
 
     methods: {
@@ -256,7 +263,12 @@
         }
       }
     }
+  }
 
-
+  .fade-enter-active, .fade-leave-active {
+    transition: all 1.5s;
+  }
+  .fade-enter, .fade-leave-to {
+    transform: translateY(100%);
   }
 </style>
