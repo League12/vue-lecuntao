@@ -10,6 +10,7 @@ import city from './views/city'
 import selectedlist from './views/goodslist/selectedlist'
 import Search from './views/Search'
 import headerbar from './views/headerbar'
+import setting from './views/Setting'
 
 Vue.use(Router)
 
@@ -61,6 +62,10 @@ export default new Router({
     {
       path: '/headerbar',
       component: headerbar
+    },
+    {
+      path: '/setting',
+      component: setting
     }
   ]
 })
