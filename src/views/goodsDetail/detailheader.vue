@@ -11,22 +11,22 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        isActive: 0,
-      }
-    },
+export default {
+  data () {
+    return {
+      isActive: 0
+    }
+  },
 
-    methods: {
-      handleClick(data) {
-        this.isActive = data;
-      },
-      handlebtnClick() {
-        this.$router.push("/goodslist");
-      }
+  methods: {
+    handleClick (data) {
+      this.isActive = data
+    },
+    handlebtnClick () {
+      this.$router.push('/goodslist')
     }
   }
+}
 </script>
 
 <style lang="scss" scoped>

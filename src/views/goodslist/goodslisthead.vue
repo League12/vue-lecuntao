@@ -7,14 +7,14 @@
 
 <script>
 
-  export default {
+export default {
 
-    data() {
-      return {
-        searchInput: "",
-      }
+  data () {
+    return {
+      searchInput: ''
     }
   }
+}
 
 </script>
 

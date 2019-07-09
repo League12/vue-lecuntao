@@ -19,7 +19,6 @@
       </nav>
     </div>
 
-
     <main>
       <ul v-infinite-scroll="loadMore"
           infinite-scroll-disabled="loading"
@@ -39,148 +38,146 @@
       </ul>
     </main>
 
-
   </div>
 </template>
 
 <script>
 
-  import Vue from 'vue';
-  import axios from 'axios';
-  import pricesort from './Pricesort';
-  import { InfiniteScroll } from 'mint-ui';
+import Vue from 'vue'
+import axios from 'axios'
+import pricesort from './Pricesort'
+import { InfiniteScroll } from 'mint-ui'
 
-  Vue.use(InfiniteScroll);
+Vue.use(InfiniteScroll)
 
-  export default {
+export default {
 
-    data() {
-      return {
-        goodslist: [],
-        navcurrent: 0,
-        prisort: 0,
-        sort: 4,
-        page: 1,
-        sequence: 0,
-        loading: false
+  data () {
+    return {
+      goodslist: [],
+      navcurrent: 0,
+      prisort: 0,
+      sort: 4,
+      page: 1,
+      sequence: 0,
+      loading: false
+    }
+  },
+
+  mounted () {
+    this.$store.commit('toggleFooterbar', false)
+    this.getAllData()
+  },
+
+  destroyed () {
+    this.$store.commit('toggleFooterbar', true)
+  },
+
+  methods: {
+
+    loadMore () {
+      axios({
+        url: `/lct?provinc=110&city=110100000000&keyword=&page=${this.page++}&sorted=${this.sort}&sequence=${this.sequence}&gcId=${JSON.parse(this.$route.params.list).gcid}&workshop=api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562373149571&act=goods&op=goodsList`
+      }).then(res => {
+        this.goodslist = [...this.goodslist, ...res.data.datas.list]
+      })
+    },
+
+    handleNavClick (cur) {
+      this.navcurrent = cur
+      switch (cur) {
+        case 0: {
+          this.getAllData()
+          break
+        }
+        case 1: {
+          this.getSorted_1()
+          break
+        }
+        case 2: {
+          this.getSorted_2()
+          break
+        }
+        case 3: {
+          this.getSorted_3()
+          break
+        }
+        default: {
+          break
+        }
       }
     },
 
-    mounted () {
-      this.$store.commit("toggleFooterbar", false);
-      this.getAllData();
+    getAllData () {
+      this.prisort = 0
+      this.sequence = 0
+      this.sort = 4
+      this.page = 1
+      axios({
+        url: `/lct?provinc=110&city=110100000000&keyword=&page=${this.page++}&sorted=${this.sort}&sequence=${this.sequence}&gcId=${JSON.parse(this.$route.params.list).gcid}&workshop=api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562373149571&act=goods&op=goodsList`
+      }).then(res => {
+        this.goodslist = res.data.datas.list
+      })
     },
 
-    destroyed () {
-      this.$store.commit("toggleFooterbar", true);
+    getSorted_1 () {
+      this.prisort = 0
+      this.sort = 1
+      this.page = 1
+      axios({
+        url: `/lct?provinc=110&city=110100000000&keyword=&page=${this.page++}&sorted=${this.sort}&sequence=${this.sequence}&gcId=${JSON.parse(this.$route.params.list).gcid}&workshop=api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562383394124&act=goods&op=goodsList`
+      }).then(res => {
+        this.goodslist = res.data.datas.list
+      })
     },
 
-    methods: {
-
-      loadMore() {
-        axios({
-          url: `/lct?provinc=110&city=110100000000&keyword=&page=${this.page++}&sorted=${this.sort}&sequence=${this.sequence}&gcId=${JSON.parse(this.$route.params.list).gcid}&workshop=api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562373149571&act=goods&op=goodsList`
-        }).then(res => {
-          this.goodslist = [...this.goodslist, ...res.data.datas.list];
-        });
-      },
-
-      handleNavClick(cur) {
-        this.navcurrent = cur;
-        switch (cur) {
-          case 0: {
-            this.getAllData();
-            break;
-          }
-          case 1: {
-            this.getSorted_1();
-            break;
-          }
-          case 2: {
-            this.getSorted_2();
-            break;
-          }
-          case 3: {
-            this.getSorted_3();
-            break;
-          }
-          default: {
-            break;
-          }
-        }
-      },
-
-      getAllData() {
-        this.prisort = 0;
-        this.sequence = 0;
-        this.sort = 4;
-        this.page = 1;
-        axios({
-          url: `/lct?provinc=110&city=110100000000&keyword=&page=${this.page++}&sorted=${this.sort}&sequence=${this.sequence}&gcId=${JSON.parse(this.$route.params.list).gcid}&workshop=api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562373149571&act=goods&op=goodsList`
-        }).then(res => {
-          this.goodslist = res.data.datas.list;
-        });
-      },
-
-      getSorted_1() {
-        this.prisort = 0;
-        this.sort = 1;
-        this.page = 1;
-        axios({
-          url: `/lct?provinc=110&city=110100000000&keyword=&page=${this.page++}&sorted=${this.sort}&sequence=${this.sequence}&gcId=${JSON.parse(this.$route.params.list).gcid}&workshop=api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562383394124&act=goods&op=goodsList`
-        }).then(res => {
-          this.goodslist = res.data.datas.list;
-        });
-      },
-
-      getSorted_2() {
-        this.sort = 3;
-        this.page = 1;
-        if (this.prisort === 0 || this.prisort === 2) {
-          this.prisort = 1;
-          this.sequence = 1;
-          axios({
-            url: `/lct?provinc=110&city=110100000000&keyword=&page=${this.page++}&sorted=${this.sort}&sequence=${this.sequence}&gcId=${JSON.parse(this.$route.params.list).gcid}&workshop=api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562383713084&act=goods&op=goodsList`
-          }).then(res => {
-            this.goodslist = res.data.datas.list;
-          });
-
-        } else if (this.prisort === 1) {
-          this.prisort = 2;
-          this.sequence = 0;
-          axios({
-            url: `/lct?provinc=110&city=110100000000&keyword=&page=${this.page++}&sorted=${this.sort}&sequence=${this.sequence}&gcId=${JSON.parse(this.$route.params.list).gcid}&workshop=api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562383713084&act=goods&op=goodsList`
-          }).then(res => {
-            this.goodslist = res.data.datas.list;
-          });
-        }
-      },
-
-      getSorted_3() {
-        this.prisort = 0;
-        this.page = 1;
-        this.sort = 2;
-        this.sequence = 0;
+    getSorted_2 () {
+      this.sort = 3
+      this.page = 1
+      if (this.prisort === 0 || this.prisort === 2) {
+        this.prisort = 1
+        this.sequence = 1
         axios({
           url: `/lct?provinc=110&city=110100000000&keyword=&page=${this.page++}&sorted=${this.sort}&sequence=${this.sequence}&gcId=${JSON.parse(this.$route.params.list).gcid}&workshop=api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562383713084&act=goods&op=goodsList`
         }).then(res => {
-          this.goodslist = res.data.datas.list;
-        });
-      },
-
-      handleBack() {
-        this.$router.push("/goodslist");
-      },
-      handleMainClick(goodsid) {
-        this.$router.push({path: `/goodsdetail/${goodsid}`});
+          this.goodslist = res.data.datas.list
+        })
+      } else if (this.prisort === 1) {
+        this.prisort = 2
+        this.sequence = 0
+        axios({
+          url: `/lct?provinc=110&city=110100000000&keyword=&page=${this.page++}&sorted=${this.sort}&sequence=${this.sequence}&gcId=${JSON.parse(this.$route.params.list).gcid}&workshop=api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562383713084&act=goods&op=goodsList`
+        }).then(res => {
+          this.goodslist = res.data.datas.list
+        })
       }
     },
 
-    components: {
-      pricesort,
-    }
+    getSorted_3 () {
+      this.prisort = 0
+      this.page = 1
+      this.sort = 2
+      this.sequence = 0
+      axios({
+        url: `/lct?provinc=110&city=110100000000&keyword=&page=${this.page++}&sorted=${this.sort}&sequence=${this.sequence}&gcId=${JSON.parse(this.$route.params.list).gcid}&workshop=api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562383713084&act=goods&op=goodsList`
+      }).then(res => {
+        this.goodslist = res.data.datas.list
+      })
+    },
 
+    handleBack () {
+      this.$router.push('/goodslist')
+    },
+    handleMainClick (goodsid) {
+      this.$router.push({ path: `/goodsdetail/${goodsid}` })
+    }
+  },
+
+  components: {
+    pricesort
   }
+
+}
 
 </script>
 
@@ -192,7 +189,6 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
-
 
     div.top {
       width: 100%;
@@ -278,7 +274,6 @@
           height: 2.45rem;
           background-color: white;
           margin-top: .04rem;
-
 
           img {
             width: 100%;

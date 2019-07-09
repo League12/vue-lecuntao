@@ -21,58 +21,54 @@
 
 <script>
 
-  import axios from 'axios';
+import axios from 'axios'
 
-  export default {
+export default {
 
-    data() {
-      return {
-        current: 1,
-        navlist: [],
-        asidelist: []
-      }
-    },
+  data () {
+    return {
+      current: 1,
+      navlist: [],
+      asidelist: []
+    }
+  },
 
-    mounted () {
+  mounted () {
+    axios.get(`/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562328567845&act=mobile_cate&op=index`)
+      .then(res => {
+        this.navlist = res.data.datas
+        this.current = res.data.datas[0].gc_id
+      })
 
-      axios.get(`/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562328567845&act=mobile_cate&op=index`)
-        .then(res => {
-        this.navlist = res.data.datas;
-        this.current = res.data.datas[0].gc_id;
-      });
+    axios({
+
+      url: `/lct?gc_id=1094api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562330605580&act=mobile_cate&op=index`,
+      method: 'get'
+    }).then(res => {
+      this.asidelist = res.data.datas
+    })
+  },
+
+  methods: {
+    handleNavClick (gcid) {
+      this.current = gcid
 
       axios({
-
-        url: `/lct?gc_id=1094api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562330605580&act=mobile_cate&op=index`,
-        method: "get",
+        url: `/lct?gc_id=${gcid}api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562330605580&act=mobile_cate&op=index`,
+        method: 'get'
       }).then(res => {
-        this.asidelist = res.data.datas;
-      });
-
+        this.asidelist = res.data.datas
+      })
     },
-
-    methods: {
-      handleNavClick(gcid) {
-        this.current = gcid;
-
-        axios({
-          url: `/lct?gc_id=${gcid}api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562330605580&act=mobile_cate&op=index`,
-          method: "get",
-        }).then(res => {
-          this.asidelist = res.data.datas;
-        });
-      },
-      handleAsideClick(gcid, gcname) {
-        this.$router.push({path: `/selectedlist/${JSON.stringify({gcid, gcname})}`});
-      }
+    handleAsideClick (gcid, gcname) {
+      this.$router.push({ path: `/selectedlist/${JSON.stringify({ gcid, gcname })}` })
     }
   }
+}
 
 </script>
 
 <style lang="scss" scoped>
-
-
 
   div.gllist {
     display: flex;

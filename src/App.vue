@@ -36,18 +36,15 @@
         } else if (scrollTop <= 1000) {
           this.isHiddenBacktop = false;
         }
+
       }
-    },
 
-    components: {
-      footerbar,
-      backtop
-    }
-
-
+  },
+  components: {
+    footerbar,
+    backtop
   }
-
-
+}
 
 </script>
 

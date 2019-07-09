@@ -67,7 +67,9 @@
   import goodsdetailfooter from './goodsDetail/Detailfooter';
   import addshopcar from './goodsDetail/Addshopcar';
 
-  export default {
+
+export default {
+
 
     data() {
       return {
@@ -104,7 +106,8 @@
       }
     }
 
-  }
+}
+
 </script>
 
 <style lang="scss" scoped>
