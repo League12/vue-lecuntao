@@ -1,6 +1,6 @@
 <template>
   <div class="glheader">
-    <input type="text" v-model="searchInput" placeholder="请输入商品名称">
+    <input type="text" v-model="searchInput" placeholder="请输入商品名称" @focus="handleFocus">
     <button>取消</button>
   </div>
 </template>
@@ -12,6 +12,12 @@ export default {
   data () {
     return {
       searchInput: ''
+    }
+  },
+
+  methods: {
+    handleFocus() {
+      this.$router.push("/search");
     }
   }
 }
