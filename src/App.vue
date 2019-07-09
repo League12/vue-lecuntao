@@ -44,6 +44,8 @@
 
   }
 
+}
+
 </script>
 
 <style lang="scss">
@@ -72,7 +74,5 @@
   input,select,button {
     outline: none;
   }
-
-
 
 </style>
