@@ -8,39 +8,37 @@
 
 <script>
 
-  import axios from 'axios';
-  import footerbar from './views/Footerbar';
-  import backtop from './views/goodslist/Backtop';
+import axios from 'axios'
+import footerbar from './views/Footerbar'
+import backtop from './views/goodslist/Backtop'
 
-  export default {
-    data() {
-      return {
-        isHiddenBacktop: false
-      }
-    },
-
-    mounted () {
-      // axios.get("/lct?city_id=140100000000&province_id=340&goods_id=625504&key=&api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562581159800&act=mobile_goods_detail&op=getGoodsInfo").then(res => {
-      //
-      //   console.log(res)
-      //
-      // })
-      window.addEventListener("scroll", this.backtop, false);
-    },
-
-    methods: {
-      backtop() {
-        let scrollTop = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop;
-        if (scrollTop >= 2000) {
-          this.isHiddenBacktop = true;
-        } else if (scrollTop <= 1000) {
-          this.isHiddenBacktop = false;
-        }
-
-      }
-
+export default {
+  data () {
+    return {
+      isHiddenBacktop: false
+    }
   },
 
+  mounted () {
+    // axios.get("/lct?city_id=140100000000&province_id=340&goods_id=625504&key=&api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562581159800&act=mobile_goods_detail&op=getGoodsInfo").then(res => {
+    //
+    //   console.log(res)
+    //
+    // })
+    window.addEventListener('scroll', this.backtop, false)
+  },
+
+  methods: {
+    backtop () {
+      let scrollTop = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop
+      if (scrollTop >= 2000) {
+        this.isHiddenBacktop = true
+      } else if (scrollTop <= 1000) {
+        this.isHiddenBacktop = false
+      }
+    }
+
+  },
 
   components: {
     footerbar,

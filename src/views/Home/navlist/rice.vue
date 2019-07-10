@@ -19,34 +19,34 @@
   </div>
 </template>
 <script>
-import axios from "axios";
+import axios from 'axios'
 export default {
-  data() {
+  data () {
     return {
       datalist: [],
       tiaolist: []
-    };
+    }
   },
-  mounted() {
+  mounted () {
     axios({
       url:
-        "/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562586783511&act=index&op=index&key="
+        '/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562586783511&act=index&op=index&key='
     }).then(res => {
       //   console.log(res.data.datas.category_goods[1]);
-      this.datalist = res.data.datas.category_goods[2].goods_list;
+      this.datalist = res.data.datas.category_goods[2].goods_list
       //   console.log(this.datalist);
-      this.tiaolist = res.data.datas.category_goods;
-    });
+      this.tiaolist = res.data.datas.category_goods
+    })
   },
   methods: {
-    tiaoclick() {
+    tiaoclick () {
       // console.log(this.datalist)
       this.$router.push(
         `/selectedlist/${JSON.stringify({
           gcid: this.tiaolist[2].cate_info.gc_id,
           gcname: this.tiaolist[2].cate_info.cate_name
         })}`
-      );
+      )
     }
   },
     tiaoxiangqing(gcid){

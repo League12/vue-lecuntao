@@ -19,13 +19,13 @@
   </div>
 </template>
 <script>
-import axios from "axios";
+import axios from 'axios'
 export default {
-  data() {
+  data () {
     return {
       datalist: [],
       tiaolist: []
-    };
+    }
   },
   mounted() {
     let aaa = localStorage.getItem("province_id") || 450;
@@ -36,24 +36,24 @@ export default {
     ).then(res => {
       this.datalist = res.data.datas.category_goods[0].goods_list;
       // console.log(res.data.datas.category_goods)
-      this.tiaolist = res.data.datas.category_goods;
-    });
+      this.tiaolist = res.data.datas.category_goods
+    })
   },
   methods: {
-    tiaoclick() {
+    tiaoclick () {
       // console.log(this.datalist)
       this.$router.push(
         `/selectedlist/${JSON.stringify({
           gcid: this.tiaolist[0].cate_info.gc_id,
           gcname: this.tiaolist[0].cate_info.cate_name
         })}`
-      );
+      )
     },
-    tiaoxiangqing(gcid){
+    tiaoxiangqing (gcid) {
       this.$router.push(`/goodsdetail/${gcid}`)
     }
   }
-};
+}
 </script>
 <style lang="scss" scoped>
 .elect {

@@ -25,24 +25,24 @@
   </div>
 </template>
 <script>
-import axios from "axios";
-import Vue from "vue";
-import Swiper from "swiper";
-import "swiper/dist/css/swiper.css";
-import { Swipe, SwipeItem } from "mint-ui";
-import electricity from "@/views/Home/navlist/electricity";
-import food from "@/views/Home/navlist/food";
-import rice from "@/views/Home/navlist/rice";
-import necessities from "@/views/Home/navlist/necessities";
-import clothing from "@/views/Home/navlist/clothing";
+import axios from 'axios'
+import Vue from 'vue'
+import Swiper from 'swiper'
+import 'swiper/dist/css/swiper.css'
+import { Swipe, SwipeItem } from 'mint-ui'
+import electricity from '@/views/Home/navlist/electricity'
+import food from '@/views/Home/navlist/food'
+import rice from '@/views/Home/navlist/rice'
+import necessities from '@/views/Home/navlist/necessities'
+import clothing from '@/views/Home/navlist/clothing'
 
 export default {
-  data() {
+  data () {
     return {
       datalist: [],
       isActive: 0,
       islist: false
-    };
+    }
   },
   components: {
     electricity,
@@ -52,41 +52,41 @@ export default {
     clothing
   },
 
-  mounted() {
+  mounted () {
     axios({
       url:
-        "/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562577964385&act=index&op=index&key="
+        '/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562577964385&act=index&op=index&key='
     }).then(res => {
       // console.log(res.data);
-      this.datalist = res.data.datas.category;
+      this.datalist = res.data.datas.category
       //   console.log(this.datalist);
       this.$nextTick(() => {
-        var swiper = new Swiper(".navlist", {
+        var swiper = new Swiper('.navlist', {
           slidesPerView: 5,
           spaceBetween: 0,
           freeMode: true
-        });
-      });
-    });
-    window.addEventListener("scroll", this.handleScroll, false);
+        })
+      })
+    })
+    window.addEventListener('scroll', this.handleScroll, false)
     // window.onscroll = this.handleScroll;
   },
 
   methods: {
-    handleClick(index) {
+    handleClick (index) {
       // console.log(document.documentElement.scrollTop);
-      this.isActive = index;
+      this.isActive = index
       if (index === 1) {
-        document.documentElement.scrollTop = 1436;
+        document.documentElement.scrollTop = 1436
       } else if (index === 2) {
-        document.documentElement.scrollTop = 1987;
+        document.documentElement.scrollTop = 1987
       } else if (index === 3) {
-        document.documentElement.scrollTop = 2538;
+        document.documentElement.scrollTop = 2538
       } else if (index === 4) {
-        document.documentElement.scrollTop = 3087;
+        document.documentElement.scrollTop = 3087
       }
     },
-    handleScroll() {
+    handleScroll () {
       // console.log(
       //   // this.$refs.mynavlist.offsetTop,
       //   this.$refs.mynavlist,
@@ -96,40 +96,40 @@ export default {
         document.documentElement.scrollTop > 878 &&
         document.documentElement.scrollTop < 1436
       ) {
-        this.isActive = 0;
+        this.isActive = 0
       } else if (
         document.documentElement.scrollTop > 1436 &&
         document.documentElement.scrollTop < 1987
       ) {
-        this.isActive = 1;
+        this.isActive = 1
       } else if (
         document.documentElement.scrollTop > 1987 &&
         document.documentElement.scrollTop < 2538
       ) {
-        this.isActive = 2;
+        this.isActive = 2
       } else if (
         document.documentElement.scrollTop > 2538 &&
         document.documentElement.scrollTop < 3087
       ) {
-        this.isActive = 3;
+        this.isActive = 3
       } else if (
         document.documentElement.scrollTop > 3087 &&
         document.documentElement.scrollTop < 3598
       ) {
-        this.isActive = 4;
+        this.isActive = 4
       }
       // console.log(this.$refs.myactive);
       if (document.documentElement.scrollTop > 878) {
-        this.islist = true;
+        this.islist = true
       } else {
-        this.islist = false;
+        this.islist = false
       }
     }
   }
   // destroyed() {
   //   window.onscroll = null;
   // }
-};
+}
 </script>
 <style lang="scss" scoped>
 .nav {

@@ -9,13 +9,13 @@
 
 <script>
 
-  export default {
-    methods: {
-      handleBack () {
-        this.$router.push('/person')
-      },
+export default {
+  methods: {
+    handleBack () {
+      this.$router.push('/person')
     }
   }
+}
 </script>
 
 <style lang="scss" scoped>

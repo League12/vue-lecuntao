@@ -18,7 +18,7 @@ import axios from 'axios'
 
 export default {
 
-  props: ["gcid"],
+  props: ['gcid'],
 
   data () {
     return {
@@ -36,14 +36,14 @@ export default {
     axios.post('/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562728872841&act=mobile_goods_detail&op=getRecommentDetail',
       `gc_id=${this.gcid}&province_id=140&city_id=140100000000&key=636e27f7c9006edc952c69b12c7b0a6d`
     ).then(res => {
-      this.datalist = res.data.datas.recommendGoods;
+      this.datalist = res.data.datas.recommendGoods
     })
   },
 
   methods: {
-    handleLiClick(gcid) {
-      this.$router.push(`/goodsdetail/${gcid}`);
-      this.$emit("myevent", gcid);
+    handleLiClick (gcid) {
+      this.$router.push(`/goodsdetail/${gcid}`)
+      this.$emit('myevent', gcid)
       // location.reload();
     }
   }

@@ -22,7 +22,7 @@ export default {
   data () {
     return {
       datalist: [],
-      tiaolist:[]
+      tiaolist: []
     }
   },
   mounted () {
@@ -32,12 +32,12 @@ export default {
     }).then(res => {
     //   console.log(res.data.datas.category_goods[1]);
       this.datalist = res.data.datas.category_goods[1].goods_list
-    //   console.log(this.datalist);
-     this.tiaolist = res.data.datas.category_goods
+      //   console.log(this.datalist);
+      this.tiaolist = res.data.datas.category_goods
     })
   },
   methods: {
-    tiaoclick() {
+    tiaoclick () {
       // console.log(this.datalist)
       this.$router.push(`/selectedlist/${JSON.stringify({"gcid":this.tiaolist[1].cate_info.gc_id, "gcname":this.tiaolist[1].cate_info.cate_name })}`)
     },

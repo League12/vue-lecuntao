@@ -5,10 +5,11 @@ import goodslist from './views/Goodslist'
 import shopcar from './views/Shopcar'
 import person from './views/Person'
 import goodsdetail from './views/Goodsdetail'
-import location from './views/location'
-import city from './views/city'
+import Location from './views/location'
+import City from './views/City'
 import selectedlist from './views/goodslist/selectedlist'
 import Search from './views/Search'
+import SearchResult from './views/SearchResult'
 import headerbar from './views/headerbar'
 import setting from './views/Setting'
 import order from './views/Order'
@@ -40,7 +41,7 @@ export default new Router({
       component: person
     },
     {
-      path: "/goodsdetail/:gcid",
+      path: '/goodsdetail/:gcid',
       component: goodsdetail
     },
     {
@@ -49,12 +50,12 @@ export default new Router({
     },
     {
       path: '/location',
-      component: location
+      component: Location
     },
     {
       path: '/location/:id',
       name: 'city',
-      component: city,
+      component: City,
       props: true
     },
     {
@@ -64,6 +65,10 @@ export default new Router({
     {
       path: '/selectedlist/:list',
       component: selectedlist
+    },
+    {
+      path: '/searchResult',
+      component: SearchResult
     },
     {
       path: '/headerbar',
@@ -99,8 +104,8 @@ export default new Router({
         },
         {
           path: '',
-          redirect: "/order/all"
-        },
+          redirect: '/order/all'
+        }
       ]
     }
   ]

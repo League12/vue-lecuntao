@@ -45,29 +45,29 @@
 
 <script>
 
-  export default {
+export default {
 
-    data() {
-      return {
-        selectCount: 1
+  data () {
+    return {
+      selectCount: 1
+    }
+  },
+
+  props: ['mydata'],
+
+  methods: {
+    handleSpanClick (data) {
+      this.selectCount += data
+      if (this.selectCount <= 1) {
+        this.selectCount = 1
       }
     },
 
-    props: ["mydata"],
-
-    methods: {
-      handleSpanClick(data) {
-        this.selectCount += data;
-        if (this.selectCount <= 1) {
-          this.selectCount = 1;
-        }
-      },
-
-      handleMaskClick() {
-        this.$store.state.isHiddenAddshopcar = false
-      },
+    handleMaskClick () {
+      this.$store.state.isHiddenAddshopcar = false
     }
   }
+}
 
 </script>
 

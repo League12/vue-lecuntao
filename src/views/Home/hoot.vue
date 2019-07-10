@@ -25,44 +25,44 @@
   </div>
 </template>
 <script>
-import { InfiniteScroll } from 'mint-ui';
+import { InfiniteScroll } from 'mint-ui'
 import Vue from 'vue'
+import axios from 'axios'
 
 Vue.use(InfiniteScroll)
-import axios from "axios";
 export default {
-  data() {
+  data () {
     return {
       datalist: [],
-      loading:false,
-      current:1
-    };
+      loading: false,
+      current: 1
+    }
   },
 
-  mounted() {
+  mounted () {
     axios
       .post(
-        "/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562674208373&act=goods&op=goodsRecom_new",
-        "provinc=140&city=140100000000&page=1&pageSize=10"
+        '/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562674208373&act=goods&op=goodsRecom_new',
+        'provinc=140&city=140100000000&page=1&pageSize=10'
       )
       .then(res => {
         // console.log(res.data);
         // console.log(res.data.datas.list);
-        this.datalist = res.data.datas.list;
-      });
+        this.datalist = res.data.datas.list
+      })
   },
   methods: {
-    loadMore() {
-    console.log("daole")
-      this.loading = true;
+    loadMore () {
+      console.log('daole')
+      this.loading = true
 
       this.current++
       axios
-      .post(
-        "/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562674208373&act=goods&op=goodsRecom_new",
-        `provinc=140&city=140100000000&page=${this.current}&pageSize=10`
-      )
-      .then(res => {
+        .post(
+          '/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562674208373&act=goods&op=goodsRecom_new',
+          `provinc=140&city=140100000000&page=${this.current}&pageSize=10`
+        )
+        .then(res => {
         // console.log(res.data);
         // console.log(res.data.datas.list);
         this.datalist = [...this.datalist,...res.data.datas.list]
@@ -74,7 +74,7 @@ export default {
       this.$router.push(`/goodsdetail/${gcid}`)
     }
   }
-};
+}
 </script>
 <style lang="scss" scoped>
 .elect {
@@ -183,4 +183,3 @@ export default {
   clear: both;
 }
 </style>
-
