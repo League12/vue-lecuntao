@@ -8,8 +8,7 @@
           :key="data.gc_id"
           @click="handleClick(index)"
           :class="(isActive === index) ? 'active' + index : ''"
-          ref="myactive"
-        >
+          ref="myactive">
           <p>
             <img :src="data.cate_image" alt />
             {{data.cate_name}}

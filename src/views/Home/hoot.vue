@@ -53,7 +53,7 @@ export default {
   },
   methods: {
     loadMore () {
-      console.log('daole')
+      // console.log('daole')
       this.loading = true
 
       this.current++
@@ -66,7 +66,7 @@ export default {
         // console.log(res.data);
         // console.log(res.data.datas.list);
         this.datalist = [...this.datalist,...res.data.datas.list]
-        console.log(this.datalist)
+        // console.log(this.datalist)
         this.loading = false;
       });
     },
