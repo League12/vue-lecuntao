@@ -2,7 +2,7 @@
   <div>
     <div class="elect">
       <p>服装城</p>
-      <p>更多<img src="../../../imgs/icon_more.png" alt />
+      <p@click="tiaoclick">更多<img src="../../../imgs/icon_more.png" alt />
       </p>
     </div>
     <ul class="goods">
@@ -21,7 +21,8 @@ import axios from 'axios'
 export default {
   data () {
     return {
-      datalist: []
+      datalist: [],
+      tiaolist:[]
     }
   },
   mounted () {
@@ -32,8 +33,17 @@ export default {
     //   console.log(res.data.datas.category_goods[1]);
       this.datalist = res.data.datas.category_goods[3].goods_list
     //   console.log(this.datalist);
+    this.tiaolist = res.data.datas.category_goods
     })
+  },
+   methods: {
+    tiaoclick() {
+      // console.log(this.datalist)
+      this.$router.push(`/selectedlist/${JSON.stringify({"gcid":this.tiaolist[3].cate_info.gc_id, "gcname":this.tiaolist[3].cate_info.cate_name })}`)
+    }
   }
+
+  
 }
 </script>
 <style lang="scss" scoped>

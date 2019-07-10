@@ -1,9 +1,10 @@
 <template>
   <div>
     <div class="elect">
-      <a href="" name="rice"></a>
       <p>米面油</p>
-      <p>更多<img src="../../../imgs/icon_more.png" alt />
+      <p @click="tiaoclick">
+        更多
+        <img src="../../../imgs/icon_more.png" alt />
       </p>
     </div>
     <ul class="goods">
@@ -13,36 +14,49 @@
         <p>{{data.goods_price}}元</p>
         <p>已售{{data.goods_salenum}}件</p>
       </li>
-    <div class="float"></div>
+      <div class="float"></div>
     </ul>
   </div>
 </template>
 <script>
-import axios from 'axios'
+import axios from "axios";
 export default {
-  data () {
+  data() {
     return {
-      datalist: []
-    }
+      datalist: [],
+      tiaolist: []
+    };
   },
-  mounted () {
+  mounted() {
     axios({
       url:
-        '/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562586783511&act=index&op=index&key='
+        "/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562586783511&act=index&op=index&key="
     }).then(res => {
-    //   console.log(res.data.datas.category_goods[1]);
-      this.datalist = res.data.datas.category_goods[2].goods_list
-    //   console.log(this.datalist);
-    })
+      //   console.log(res.data.datas.category_goods[1]);
+      this.datalist = res.data.datas.category_goods[2].goods_list;
+      //   console.log(this.datalist);
+      this.tiaolist = res.data.datas.category_goods;
+    });
+  },
+  methods: {
+    tiaoclick() {
+      // console.log(this.datalist)
+      this.$router.push(
+        `/selectedlist/${JSON.stringify({
+          gcid: this.tiaolist[2].cate_info.gc_id,
+          gcname: this.tiaolist[2].cate_info.cate_name
+        })}`
+      );
+    }
   }
-}
+};
 </script>
 <style lang="scss" scoped>
 .elect {
   width: 100%;
   height: 0.35rem;
   background: #f0f0f0;
-  line-height: .35rem;
+  line-height: 0.35rem;
   p:nth-of-type(1) {
     float: left;
     padding-left: 5px;
@@ -138,8 +152,8 @@ export default {
     }
   }
 }
-.float{
-    height: 0;
-    clear: both;
+.float {
+  height: 0;
+  clear: both;
 }
 </style>

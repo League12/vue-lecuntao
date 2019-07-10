@@ -1,53 +1,75 @@
 <template>
   <div>
     <div class="elect">
-      <p>电器城</p>
+      <p>热门推荐</p>
       <p>
         更多
         <!-- <img src="../../../imgs/icon_more.png" alt /> -->
       </p>
     </div>
-    <ul class="goods">
-      <li v-for="data in datalist" :key="data.goods_commonid">
+    <ul
+      class="goods"
+      v-infinite-scroll="loadMore"
+      infinite-scroll-distance="30"
+      infinite-scroll-disabled="loading"
+      infinite-scroll-immediate-check="false"
+    >
+      <li v-for="(data,index) in datalist" :key="index">
         <img :src="data.goods_image" alt />
         <p>{{data.goods_name}}</p>
         <p>{{data.goods_price}}元</p>
         <p>已售{{data.goods_salenum}}件</p>
       </li>
-    </ul>
     <div class="float"></div>
+    </ul>
   </div>
 </template>
 <script>
+import { InfiniteScroll } from 'mint-ui';
+import Vue from 'vue'
+
+Vue.use(InfiniteScroll)
 import axios from "axios";
 export default {
   data() {
     return {
-      datalist: []
+      datalist: [],
+      loading:false,
+      current:1
     };
   },
 
-  //   provinc=140&city=140100000000&page=1&pageSize=10
-  //   provinc=140&city=140100000000&page=2&pageSize=10
-  // https://mobileway.lecuntao.com/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562674208373&act=goods&op=goodsRecom_new
-  // https://mobileway.lecuntao.com/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562674208373&act=goods&op=goodsRecom_new
-  // http://localhost:8080/lct?provinc=140&city=140100000000&page=2&pageSize=10&api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562674208373&act=goods&op=goodsRecom_new
-
   mounted() {
-    axios({
-      method: "post",
-      url:
-        "lct?provinc=140&city=140100000000&page=2&pageSize=10&api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562674208373&act=goods&op=goodsRecom_new",
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      }
-    }).then(res => {
-      console.log(res.data);
-      //     console.log(res.data.datas.list)
-      this.datalist = res.data.datas.list;
-    });
+    axios
+      .post(
+        "/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562674208373&act=goods&op=goodsRecom_new",
+        "provinc=140&city=140100000000&page=1&pageSize=10"
+      )
+      .then(res => {
+        // console.log(res.data);
+        // console.log(res.data.datas.list);
+        this.datalist = res.data.datas.list;
+      });
+  },
+  methods: {
+    loadMore() {
+    console.log("daole")
+      this.loading = true;
 
-    
+      this.current++
+      axios
+      .post(
+        "/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562674208373&act=goods&op=goodsRecom_new",
+        `provinc=140&city=140100000000&page=${this.current}&pageSize=10`
+      )
+      .then(res => {
+        // console.log(res.data);
+        // console.log(res.data.datas.list);
+        this.datalist = [...this.datalist,...res.data.datas.list]
+        console.log(this.datalist)
+        this.loading = false;
+      });
+    }
   }
 };
 </script>
@@ -152,6 +174,10 @@ export default {
       margin-right: 10px;
     }
   }
+}
+.float {
+  height: 0;
+  clear: both;
 }
 </style>
 

@@ -1,48 +1,65 @@
 <template>
-  <div >
-    <div class="elect" >
+  <div>
+    <div class="elect">
       <p>电器城</p>
-      <p>
+      <p @click="tiaoclick">
         更多
         <img src="../../../imgs/icon_more.png" alt />
       </p>
     </div>
     <ul class="goods">
-      <li v-for="data in datalist" :key="data.goods_commonid">
+      <li v-for="data in datalist" :key="data.goods_commonid" @click="tiaoxiangqing(data.goods_id)">
         <img :src="data.goods_image" alt />
         <p>{{data.goods_name}}</p>
         <p>{{data.goods_price}}元</p>
         <p>已售{{data.goods_salenum}}件</p>
       </li>
-    </ul>
     <div class="float"></div>
+    </ul>
   </div>
 </template>
 <script>
-import axios from 'axios'
+import axios from "axios";
 export default {
-  data () {
+  data() {
     return {
-      datalist: []
-    }
+      datalist: [],
+      tiaolist: []
+    };
   },
-  mounted () {
+  mounted() {
     axios({
       url:
-        '/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562586783511&act=index&op=index&key='
+        "/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562586783511&act=index&op=index&key="
     }).then(res => {
-      this.datalist = res.data.datas.category_goods[0].goods_list
-    })
+      this.datalist = res.data.datas.category_goods[0].goods_list;
+      // console.log(res.data.datas.category_goods)
+      this.tiaolist = res.data.datas.category_goods;
+    });
+  },
+  methods: {
+    tiaoclick() {
+      // console.log(this.datalist)
+      this.$router.push(
+        `/selectedlist/${JSON.stringify({
+          gcid: this.tiaolist[0].cate_info.gc_id,
+          gcname: this.tiaolist[0].cate_info.cate_name
+        })}`
+      );
+    },
+    tiaoxiangqing(gcid){
+      this.$router.push(`/goodsdetail/${gcid}`)
+    }
   }
-}
+};
 </script>
 <style lang="scss" scoped>
 .elect {
   width: 100%;
   height: 0.35rem;
   background: #f0f0f0;
-  line-height: .35rem;
-  margin-top: .48rem;
+  line-height: 0.35rem;
+  margin-top: 0.48rem;
   p:nth-of-type(1) {
     float: left;
     padding-left: 5px;
@@ -138,9 +155,8 @@ export default {
     }
   }
 }
-.float{
-    height: 0;
-    clear: both;
+.float {
+  height: 0;
+  clear: both;
 }
-
 </style>
