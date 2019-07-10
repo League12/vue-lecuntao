@@ -10,7 +10,7 @@
 
     <div class="swiper-container s1">
       <div class="swiper-wrapper list">
-        <div class="swiper-slide" v-for="data in list" :key="data.goods_id">
+        <div class="swiper-slide" v-for="data in list" :key="data.goods_id"  @click="tiaoxiangqing(data.goods_id)">
           <img :src="data.goods_image" alt />
           <p>{{data.goods_name}}</p>
           <p>{{data.goods_price}}</p>
@@ -57,7 +57,14 @@ export default {
         })
       })
     })
+  },
+  methods:{
+    
+    tiaoxiangqing(gcid){
+      this.$router.push(`/goodsdetail/${gcid}`)
+    }
   }
+
 }
 </script>
 <style lang="scss" scoped>

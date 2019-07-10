@@ -10,53 +10,65 @@
 
     <div class="swiper-container tesee">
       <div class="list swiper-wrapper">
-        <div v-for="data in list" :key="data.goods_id" class="swiper-slide">
+        <div
+          v-for="data in list"
+          :key="data.goods_id"
+          class="swiper-slide"
+          @click="tiaoxiangqing(data.goods_id)"
+        >
           <img :src="data.goods_image" alt />
           <p>{{data.goods_name}}</p>
           <p>{{data.goods_price}}</p>
         </div>
-        <div class="swiper-slide"><img src="../../imgs/img_le6ji_see_all.png" alt /></div>
+        <div class="swiper-slide">
+          <img src="../../imgs/img_le6ji_see_all.png" alt />
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-import axios from 'axios'
-import Swiper from 'swiper' // js
-import 'swiper/dist/css/swiper.css'
-import { Swipe, SwipeItem } from 'mint-ui'
+import axios from "axios";
+import Swiper from "swiper"; // js
+import "swiper/dist/css/swiper.css";
+import { Swipe, SwipeItem } from "mint-ui";
 
 export default {
-  data () {
+  data() {
     return {
       url: [],
       list: []
-    }
+    };
   },
-  mounted () {
+  mounted() {
     axios({
-      url: '/resource/images/index/icon_teseguan.png?lv=46f429c64a'
+      url: "/resource/images/index/icon_teseguan.png?lv=46f429c64a"
     }).then(res => {
       // console.log(res);
-      this.url = res.data
-    })
+      this.url = res.data;
+    });
     axios({
       url:
-        '/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562563317957&act=index&op=index&key='
+        "/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562563317957&act=index&op=index&key="
     }).then(res => {
       // console.log(res.data.datas.feature.recommend_goods);
-      this.list = res.data.datas.feature.recommend_goods
+      this.list = res.data.datas.feature.recommend_goods;
       // console.log(this.list);
       this.$nextTick(() => {
-        var swiper = new Swiper('.tesee', {
+        var swiper = new Swiper(".tesee", {
           slidesPerView: 3,
           spaceBetween: 30,
           freeMode: true
-        })
-      })
-    })
+        });
+      });
+    });
+  },
+  methods: {
+    tiaoxiangqing(gcid) {
+      this.$router.push(`/goodsdetail/${gcid}`);
+    }
   }
-}
+};
 </script>
 <style lang="scss" scoped>
 .tese {
