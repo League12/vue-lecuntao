@@ -7,11 +7,16 @@
             <li @click="price()">价格<span><span :class="sequence === 1?'no_1':'yes_1'"></span><span :class="sequence === 0 && sorted === 3?'no_2':'yes_2'"></span></span></li>
             <li>筛选</li>
         </ul>
-        <ul>
+        <ul
+        v-infinite-scroll="loadMore"
+        infinite-scroll-distance="30"
+        infinite-scroll-disabled="loading"
+        infinite-scroll-immediate-check="false"
+        >
             <li v-for="data in datalist" :key="data.goods_id" @click="goGood(data.goods_id)">
                 <img :src="data.goods_image" alt="">
                 <div>
-                    <h2 v-html="data.goods_name"></h2>
+                    <h2 v-html="data.goods_name" ></h2>
                     <h3><i></i>{{data.goods_price}}<span>{{data.goods_salenum}}人付款</span></h3>
                 </div>
             </li>
@@ -26,12 +31,18 @@ export default {
     return {
       datalist: [],
       searchText: localStorage.getItem('searchResult'),
+      loading: false,
+      current: 1,
       sorted: 4,
       sequence: 0
     }
   },
   mounted () {
     this.qwe()
+    this.$store.state.isHiddenFooterbar = false
+  },
+  destroyed () {
+    this.$store.state.isHiddenFooterbar = true
   },
   methods: {
     qwe () {
@@ -41,6 +52,19 @@ export default {
         this.datalist = res.data.datas.list
       })
     },
+    loadMore () {
+      console.log('daole')
+      this.loading = true
+      this.current++
+      axios.post(
+          '/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562728533342&act=goods&op=goodsList',
+          `provinc=110&city=110100000000&keyword=${encodeURIComponent(localStorage.getItem('searchResult'))}&page=${this.current}&coupon_id=&sorted=${this.sorted}&sequence=${this.sequence}&start_price=0&ent_price=0&goods_from=0&key=&store_id=`
+          )
+          .then(res => {
+          this.datalist = [...this.datalist,...res.data.datas.list]
+          this.loading = false;
+      });
+  },
     goSearch () {
       this.$router.push('/search')
     },
@@ -176,6 +200,8 @@ export default {
                         line-height: .21rem;
                         font-size: .15rem;
                         overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
                         word-wrap: break-word;
                         font-weight: normal;
                         &>.goods_red{

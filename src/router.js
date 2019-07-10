@@ -10,6 +10,7 @@ import City from './views/City'
 import selectedlist from './views/goodslist/selectedlist'
 import Search from './views/Search'
 import SearchResult from './views/SearchResult'
+import SearchStore from './views/SearchStore'
 import headerbar from './views/headerbar'
 import setting from './views/Setting'
 import order from './views/Order'
@@ -69,6 +70,10 @@ export default new Router({
     {
       path: '/searchResult',
       component: SearchResult
+    },
+    {
+      path: '/searchStore',
+      component: SearchStore
     },
     {
       path: '/headerbar',
