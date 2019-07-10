@@ -16,6 +16,7 @@
 <style lang="scss" scoped>
 
   div.footerbar {
+    z-index: 2;
     height: .5rem;
     width: 100%;
     background-color: white;

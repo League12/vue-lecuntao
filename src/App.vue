@@ -40,6 +40,8 @@
       }
 
   },
+
+
   components: {
     footerbar,
     backtop
