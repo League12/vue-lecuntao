@@ -22,6 +22,7 @@ export default {
   },
   mounted () {
     this.$store.state.isHiddenFooterbar = false
+    document.documentElement.scrollTop = 0
     axios.get('/lct?region=province_name&api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562550203706&act=Address&op=get_region/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562550203706&act=Address&op=get_region').then(
       res => {
         this.datalist = res.data.datas

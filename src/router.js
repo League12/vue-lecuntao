@@ -5,10 +5,11 @@ import goodslist from './views/Goodslist'
 import shopcar from './views/Shopcar'
 import person from './views/Person'
 import goodsdetail from './views/Goodsdetail'
-import location from './views/location'
-import city from './views/city'
+import Location from './views/Location'
+import City from './views/City'
 import selectedlist from './views/goodslist/selectedlist'
 import Search from './views/Search'
+import SearchResult from './views/SearchResult'
 import headerbar from './views/headerbar'
 
 Vue.use(Router)
@@ -42,12 +43,12 @@ export default new Router({
     },
     {
       path: '/location',
-      component: location
+      component: Location
     },
     {
       path: '/location/:id',
       name: 'city',
-      component: city,
+      component: City,
       props: true
     },
     {
@@ -59,8 +60,8 @@ export default new Router({
       component: selectedlist
     },
     {
-      path: '/headerbar',
-      component: headerbar
+      path: '/searchResult',
+      component: SearchResult
     }
   ]
 })

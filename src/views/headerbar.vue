@@ -1,6 +1,6 @@
 <template>
     <div class="header" :id="headerBackground?'now':'go'">
-        <div>
+        <div @click="locationChoose()">
             <i></i>
             <span>{{location}}</span>
             <i></i>
@@ -23,6 +23,9 @@ export default {
   methods: {
     searchclick () {
       this.$router.push('/Search')
+    },
+    locationChoose () {
+      this.$router.push('/Location')
     },
     menu () {
       this.scroll = document.documentElement.scrollTop
