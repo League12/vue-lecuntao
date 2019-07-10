@@ -1,7 +1,7 @@
 <template>
   <div class="setting">
     <settingheader></settingheader>
-    <p>
+    <p @click="handlePClick">
       <span>关于乐村淘</span>
     </p>
 
@@ -18,6 +18,12 @@
 
     mounted() {
 
+    },
+
+    methods: {
+      handlePClick() {
+        location.assign("https://mobile.lecuntao.com/?act=login&op=our&client=nowap&api_version=2.3.0");
+      }
     },
 
     components: {

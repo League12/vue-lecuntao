@@ -2,9 +2,18 @@
   <div class="goodsdetail" v-if="datalist" id="a1">
     <detailheader></detailheader>
 
-    <div class="banner" v-if="datalist">
-      <img :src="datalist.goods_info.goods_image" alt="">
+    <div class="swiper-container banner">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" v-for="(img, index) in datalist.img_list">
+          <img :src="img.goods_image" alt="">
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
     </div>
+
+<!--    <div class="banner" v-if="datalist">-->
+<!--      <img :src="datalist.goods_info.goods_image" alt="">-->
+<!--    </div>-->
 
     <div class="info" v-if="datalist">
       <h2>
@@ -47,7 +56,7 @@
       </ul>
     </div>
 
-    <recommand4you id="a3"></recommand4you>
+    <recommand4you id="a3" @myevent="handleevent($event)" :gcid="datalist.goods_info.gc_id"></recommand4you>
 
     <goodsdetailfooter></goodsdetailfooter>
 
@@ -66,6 +75,8 @@
   import recommand4you from './goodsDetail/Recommand4you';
   import goodsdetailfooter from './goodsDetail/Detailfooter';
   import addshopcar from './goodsDetail/Addshopcar';
+  import Swiper from "swiper"
+  import "swiper/dist/css/swiper.min.css"
 
 
 export default {
@@ -79,13 +90,21 @@ export default {
 
     mounted() {
       this.$store.state.isHiddenFooterbar = false;
-        axios({
-          url : `/test.json`,
-          methods: "get",
-        }).then(res => {
-          this.datalist = res.data[this.getRandom(0, 10)].datas;
+        axios.post("/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562728872841&act=mobile_goods_detail&op=getGoodsInfo",
+          `city_id=140100000000&province_id=140&goods_id=${this.$route.params.gcid}&key=636e27f7c9006edc952c69b12c7b0a6d`
+        ).then(res => {
+          this.datalist = res.data.datas;
+
+          this.$nextTick(function () {
+            new Swiper(".banner",{
+              pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+              },
+            });
+          });
         });
-      //   location.assign(`https://m.lecuntao.com/tpl/goods/index.html?goods_id=${this.$route.params.gcid}`);
+
       },
 
 
@@ -103,7 +122,17 @@ export default {
     methods: {
       getRandom(min, max) {
         return Math.floor(Math.random() * (max - min) + min)
-      }
+      },
+
+      handleevent(ev) {
+        axios.post("/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562728872841&act=mobile_goods_detail&op=getGoodsInfo",
+          `city_id=140100000000&province_id=140&goods_id=${ev}&key=636e27f7c9006edc952c69b12c7b0a6d`
+        ).then(res => {
+          this.datalist = res.data.datas;
+          document.documentElement.scrollTop = 0;
+          document.body.scrollTop = 0;
+        });
+      },
     }
 
 }
@@ -127,6 +156,8 @@ export default {
       width: 100%;
       height: 3.75rem;
       border-bottom: 1px solid #f3f3f3;
+      position: relative;
+      z-index: 0;
       img {
         width: 100%;
         height: 100%;

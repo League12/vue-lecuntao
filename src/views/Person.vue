@@ -5,34 +5,34 @@
         <img src="/imgs/league/member_avatar_2x.png" alt="">
       </div>
       <p>lct_13147170456</p>
-      <span @click="handleSpanClick"></span>
+      <span @click="handleSpanClick('all')"></span>
     </header>
 
     <nav>
-      <p>
+      <p @click="handleNavClick('all')">
         <span>我的订单</span>
         <span>查看全部订单</span>
       </p>
       <ul>
-        <li>
+        <li @click="handleNavClick('orderpayment')">
           <img src="/imgs/league/icon_gerenzhongixndaifukuan.png" alt="">
           <p>待付款</p>
           <span>0</span>
         </li>
 
-        <li>
+        <li @click="handleNavClick('orderdelivergoods')">
           <img src="/imgs/league/icon_gerenzhongxindaihouhuo.png" alt="">
           <p>代发货</p>
           <span>0</span>
         </li>
 
-        <li>
+        <li @click="handleNavClick('orderreceivinggoods')">
           <img src="/imgs/league/icon_gerenzhongxindaishouhuo.png" alt="">
           <p>待收货</p>
           <span>0</span>
         </li>
 
-        <li>
+        <li @click="handleNavClick('orderfinal')">
           <img src="/imgs/league/icon_gerenzhongxintuihuo.png" alt="">
           <p>退款退货</p>
           <span>0</span>
@@ -113,6 +113,9 @@
     methods: {
       handleSpanClick() {
         this.$router.push("/setting")
+      },
+      handleNavClick(data) {
+        this.$router.push(`/order/${data}`)
       }
     }
   }
@@ -133,7 +136,7 @@
       height: 2rem;
       width: 100%;
       background: url("/imgs/league/bg_gerenzhongxinbeijing.png") no-repeat center;
-      background-size: contain;
+      background-size: 100% 100%;
       position: relative;
       display: flex;
       flex-direction: column;
@@ -174,7 +177,7 @@
       &>p {
         height: .51rem;
         border-bottom: 1px solid #ccc;
-        background: url("/imgs/league/icon_wodedingdanjiantou.png") no-repeat 3.54rem center;
+        background: url("/imgs/league/icon_wodedingdanjiantou.png") no-repeat 98% center;
         background-size: .11rem .11rem;
         display: flex;
         align-items: center;
@@ -186,6 +189,9 @@
         }
         span:nth-of-type(2) {
           color: #b2b2b2;
+          position: absolute;
+          right: .3rem;
+          line-height: .74rem;
         }
       }
 
@@ -239,7 +245,7 @@
           display: flex;
           align-items: center;
           padding-left: .09rem;
-          background: url("/imgs/league/icon_wodedingdanjiantou.png") no-repeat 3.54rem center;
+          background: url("/imgs/league/icon_wodedingdanjiantou.png") no-repeat 98% center;
           background-size: .11rem .11rem;
           position: relative;
           img {
