@@ -64,20 +64,18 @@
       <addshopcar :mydata="datalist" v-if="$store.state.isHiddenAddshopcar"></addshopcar>
     </transition>
 
-
   </div>
 </template>
 
 <script>
 
-  import axios from "axios";
-  import detailheader from './goodsDetail/detailheader';
-  import recommand4you from './goodsDetail/Recommand4you';
-  import goodsdetailfooter from './goodsDetail/Detailfooter';
-  import addshopcar from './goodsDetail/Addshopcar';
-  import Swiper from "swiper"
-  import "swiper/dist/css/swiper.min.css"
-
+import axios from 'axios'
+import detailheader from './goodsDetail/detailheader'
+import recommand4you from './goodsDetail/Recommand4you'
+import goodsdetailfooter from './goodsDetail/Detailfooter'
+import addshopcar from './goodsDetail/Addshopcar'
+import Swiper from 'swiper'
+import 'swiper/dist/css/swiper.min.css'
 
 export default {
 
@@ -137,9 +135,11 @@ export default {
           document.body.scrollTop = 0;
         });
       },
-    }
 
-}
+    }
+  }
+
+
 
 </script>
 

@@ -1,6 +1,6 @@
 <template>
     <div class="header" :id="headerBackground?'now':'go'">
-        <div>
+        <div @click="locationChoose()">
             <i></i>
             <span>{{location}}</span>
             <i></i>
@@ -23,6 +23,9 @@ export default {
   methods: {
     searchclick () {
       this.$router.push('/Search')
+    },
+    locationChoose () {
+      this.$router.push('/Location')
     },
     menu () {
       this.scroll = document.documentElement.scrollTop
@@ -63,6 +66,7 @@ export default {
         color: #fff;
         position: fixed;
         top:0;
+        z-index: 10;
         &>div:nth-of-type(1){
             height: .28rem;
             width: .77rem;
@@ -82,6 +86,7 @@ export default {
                 height: .26rem;
                 text-align: center;
                 font-size: .16rem;
+                line-height: .24rem;
             }
             &>i:nth-of-type(2){
                 width: .05rem;

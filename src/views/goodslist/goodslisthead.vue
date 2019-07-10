@@ -16,8 +16,8 @@ export default {
   },
 
   methods: {
-    handleFocus() {
-      this.$router.push("/search");
+    handleFocus () {
+      this.$router.push('/search')
     }
   }
 }

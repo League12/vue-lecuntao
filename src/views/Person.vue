@@ -103,22 +103,21 @@
       </ul>
     </main>
 
-
   </div>
 </template>
 
 <script>
 
-  export default {
-    methods: {
-      handleSpanClick() {
-        this.$router.push("/setting")
-      },
-      handleNavClick(data) {
-        this.$router.push(`/order/${data}`)
-      }
+export default {
+  methods: {
+    handleSpanClick () {
+      this.$router.push('/setting')
+    },
+    handleNavClick (data) {
+      this.$router.push(`/order/${data}`)
     }
   }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -292,8 +291,6 @@
       }
     }
 
-
   }
-
 
 </style>

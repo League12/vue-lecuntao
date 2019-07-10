@@ -12,24 +12,24 @@
 
 <script>
 
-  import settingheader from './setting/Settingheader'
+import settingheader from './setting/Settingheader'
 
-  export default {
+export default {
 
-    mounted() {
+  mounted () {
 
-    },
+  },
 
-    methods: {
-      handlePClick() {
-        location.assign("https://mobile.lecuntao.com/?act=login&op=our&client=nowap&api_version=2.3.0");
-      }
-    },
-
-    components: {
-      settingheader,
+  methods: {
+    handlePClick () {
+      location.assign('https://mobile.lecuntao.com/?act=login&op=our&client=nowap&api_version=2.3.0')
     }
+  },
+
+  components: {
+    settingheader
   }
+}
 
 </script>
 
@@ -63,7 +63,6 @@
       margin-top: .17rem;
       margin-left: .11rem;
     }
-
 
   }
 

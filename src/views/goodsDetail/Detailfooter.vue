@@ -17,13 +17,13 @@
 
 <script>
 
-  export default {
-    methods: {
-      handleAddClick() {
-        this.$store.state.isHiddenAddshopcar = true
-      }
+export default {
+  methods: {
+    handleAddClick () {
+      this.$store.state.isHiddenAddshopcar = true
     }
   }
+}
 </script>
 
 <style lang="scss" scoped>

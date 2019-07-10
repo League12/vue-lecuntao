@@ -1,25 +1,66 @@
 <template>
   <div>
-    <headerbar></headerbar>
-    <div style="height:10000px;"></div>
+    <div class="home">
+      <homeheader></homeheader>
+      <swiper>
+        <div v-for="data in looplist" class="swiper-slide" :key="data.adv_id">
+          <img :src="data.adv_image" />
+        </div>
+      </swiper>
+      <navswiper></navswiper>
+      <le></le>
+      <tese></tese>
+      <category></category>
+      <hoot></hoot>
+    </div>
   </div>
 </template>
-
 <script>
-import headerbar from './headerbar'
-
+import homeheader from '@/views/headerbar'
+import swiper from '@/views/Home/Swiper'
+import Vue from 'vue'
+import axios from 'axios'
+import navswiper from '@/views/Home/navSwiper'
+import le from '@/views/Home/le6'
+import tese from '@/views/Home/tese'
+import category from '@/views/Home/category'
+import hoot from '@/views/Home/hoot'
 export default {
   data () {
     return {
-
+      looplist: []
     }
   },
   components: {
-    headerbar
+    homeheader,
+    swiper,
+    navswiper,
+    le,
+    tese,
+    category,
+    hoot
+  },
+  mounted () {
+    axios({
+      url:
+        '/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562395972890&act=index&op=index&key=2086cabe32a37177a677527e5d3884a8'
+    }).then(res => {
+      // console.log(res.data)
+      this.looplist = res.data.datas.adv
+      // console.log(res.data.datas.adv)
+    })
   }
 }
 </script>
 
 <style lang="scss" scoped>
-
+.home {
+  height: 100%;
+  position: relative;
+  margin-bottom: 50px;
+  overflow: hidden;
+}
+.header {
+  display: flex;
+}
 </style>

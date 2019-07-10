@@ -22,14 +22,12 @@ export default {
     axios.get(`/lct?region=city_name&parent_id=${localStorage.getItem('province_id')}&api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562566352431&act=Address&op=get_region`).then(
       res => {
         this.datalist = res.data.datas
-        console.log(this.datalist)
       })
-    console.log(document.cookie)
   },
   methods: {
     handleClick (id, city) {
       localStorage.setItem('city_id', `${id}`)
-      localStorage.setItem('city_name', `${city}`)
+      localStorage.setItem('city_name', `${City}`)
       this.$router.push('/home')
     },
     backClick () {

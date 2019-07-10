@@ -8,6 +8,7 @@
 
 <script>
 
+
   import axios from 'axios';
   import footerbar from './views/Footerbar';
   import backtop from './views/goodslist/Backtop';
@@ -24,22 +25,21 @@
     },
 
     methods: {
-      backtop() {
+      backtop () {
         let scrollTop = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop;
         if (scrollTop >= 2000) {
           this.isHiddenBacktop = true;
         } else if (scrollTop <= 1000) {
           this.isHiddenBacktop = false;
         }
-
       }
+    },
 
-  },
-  components: {
-    footerbar,
-    backtop
+    components: {
+      footerbar,
+      backtop
+    }
   }
-}
 
 </script>
 

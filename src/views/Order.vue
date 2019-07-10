@@ -20,38 +20,36 @@
 
 <script>
 
+import orderheader from './order/Orderheader'
 
-  import orderheader from './order/Orderheader';
+export default {
 
-  export default {
-
-    data() {
-      return {
-        isActive: ''
-      }
-    },
-
-    mounted() {
-      this.isActive = this.$route.params.order;
-      this.$store.state.isHiddenFooterbar = false;
-      this.$refs.myorder.style.height = window.innerHeight + 'px';
-    },
-
-    methods: {
-      handleLiClick(data) {
-        this.isActive = data + '';
-      }
-    },
-
-    components: {
-      orderheader
-    },
-
-    destroyed () {
-      this.$store.state.isHiddenFooterbar = true;
+  data () {
+    return {
+      isActive: ''
     }
-  }
+  },
 
+  mounted () {
+    this.isActive = this.$route.params.order
+    this.$store.state.isHiddenFooterbar = false
+    this.$refs.myorder.style.height = window.innerHeight + 'px'
+  },
+
+  methods: {
+    handleLiClick (data) {
+      this.isActive = data + ''
+    }
+  },
+
+  components: {
+    orderheader
+  },
+
+  destroyed () {
+    this.$store.state.isHiddenFooterbar = true
+  }
+}
 
 </script>
 
@@ -68,7 +66,6 @@
     img {
       display: block;
     }
-
 
     nav {
       height: .8rem;
@@ -98,7 +95,6 @@
         color: white;
       }
     }
-
 
   }
 </style>
