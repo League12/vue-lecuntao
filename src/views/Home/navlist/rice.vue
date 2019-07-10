@@ -8,7 +8,7 @@
       </p>
     </div>
     <ul class="goods">
-      <li v-for="data in datalist" :key="data.goods_commonid">
+      <li v-for="data in datalist" :key="data.goods_commonid" @click="tiaoxiangqing(data.goods_id)">
         <img :src="data.goods_image" alt />
         <p>{{data.goods_name}}</p>
         <p>{{data.goods_price}}元</p>
@@ -48,7 +48,10 @@ export default {
         })}`
       );
     }
-  }
+  },
+    tiaoxiangqing(gcid){
+      this.$router.push(`/goodsdetail/${gcid}`)
+    }
 };
 </script>
 <style lang="scss" scoped>

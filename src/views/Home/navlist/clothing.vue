@@ -6,7 +6,7 @@
       </p>
     </div>
     <ul class="goods">
-      <li v-for="data in datalist" :key="data.goods_commonid">
+      <li v-for="data in datalist" :key="data.goods_commonid" @click="tiaoxiangqing(data.goods_id)">
         <img :src="data.goods_image" alt />
         <p>{{data.goods_name}}</p>
         <p>{{data.goods_price}}元</p>
@@ -40,6 +40,9 @@ export default {
     tiaoclick() {
       // console.log(this.datalist)
       this.$router.push(`/selectedlist/${JSON.stringify({"gcid":this.tiaolist[3].cate_info.gc_id, "gcname":this.tiaolist[3].cate_info.cate_name })}`)
+    },
+    tiaoxiangqing(gcid){
+      this.$router.push(`/goodsdetail/${gcid}`)
     }
   }
 

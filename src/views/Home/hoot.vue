@@ -14,7 +14,7 @@
       infinite-scroll-disabled="loading"
       infinite-scroll-immediate-check="false"
     >
-      <li v-for="(data,index) in datalist" :key="index">
+      <li v-for="(data,index) in datalist" :key="index" @click="tiaoxiangqing(data.goods_id)">
         <img :src="data.goods_image" alt />
         <p>{{data.goods_name}}</p>
         <p>{{data.goods_price}}元</p>
@@ -69,6 +69,9 @@ export default {
         console.log(this.datalist)
         this.loading = false;
       });
+    },
+    tiaoxiangqing(gcid){
+      this.$router.push(`/goodsdetail/${gcid}`)
     }
   }
 };
