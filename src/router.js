@@ -11,6 +11,13 @@ import selectedlist from './views/goodslist/selectedlist'
 import Search from './views/Search'
 import SearchResult from './views/SearchResult'
 import headerbar from './views/headerbar'
+import setting from './views/Setting'
+import order from './views/Order'
+import orderall from './views/order/Orderall'
+import orderdelivergoods from './views/order/Orderdelivergoods'
+import orderfinal from './views/order/Orderfinal'
+import orderpayment from './views/order/Orderpayment'
+import orderreceivinggoods from './views/order/Orderreceivinggoods'
 
 Vue.use(Router)
 
@@ -62,6 +69,44 @@ export default new Router({
     {
       path: '/searchResult',
       component: SearchResult
+    },
+    {
+      path: '/headerbar',
+      component: headerbar
+    },
+    {
+      path: '/setting',
+      component: setting
+    },
+    {
+      path: '/order',
+      component: order,
+      children: [
+        {
+          path: '/order/all',
+          component: orderall
+        },
+        {
+          path: '/order/orderpayment',
+          component: orderpayment
+        },
+        {
+          path: '/order/orderdelivergoods',
+          component: orderdelivergoods
+        },
+        {
+          path: '/order/orderreceivinggoods',
+          component: orderreceivinggoods
+        },
+        {
+          path: '/order/orderfinal',
+          component: orderfinal
+        },
+        {
+          path: '',
+          redirect: '/order/all'
+        }
+      ]
     }
   ]
 })

@@ -61,7 +61,7 @@ export default {
       })
     },
     handleAsideClick (gcid, gcname) {
-      this.$router.push({ path: `/selectedlist/${JSON.stringify({ gcid, gcname })}` })
+      this.$router.push({ path: `/selectedlist/${JSON.stringify({ 'gcid': gcid, 'gcname': gcname })}` })
     }
   }
 }

@@ -9,7 +9,7 @@
         <img src="/imgs/league/shgo.png" alt="">
         <span>购物车</span>
       </li>
-      <li>加入购物车</li>
+      <li @click="handleAddClick">加入购物车</li>
       <li>立即购买</li>
     </ul>
   </div>
@@ -17,6 +17,13 @@
 
 <script>
 
+export default {
+  methods: {
+    handleAddClick () {
+      this.$store.state.isHiddenAddshopcar = true
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

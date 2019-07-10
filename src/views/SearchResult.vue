@@ -8,7 +8,7 @@
             <li>筛选</li>
         </ul>
         <ul>
-            <li v-for="data in datalist" :key="data.goods_id" @click="goGood()">
+            <li v-for="data in datalist" :key="data.goods_id" @click="goGood(data.goods_id)">
                 <img :src="data.goods_image" alt="">
                 <div>
                     <h2 v-html="data.goods_name"></h2>
@@ -24,56 +24,54 @@ import axios from 'axios'
 export default {
   data () {
     return {
-        datalist: [],
-        searchText: localStorage.getItem("searchResult"),
-        sorted:4,
-        sequence: 0,
+      datalist: [],
+      searchText: localStorage.getItem('searchResult'),
+      sorted: 4,
+      sequence: 0
     }
   },
   mounted () {
     this.qwe()
   },
-  methods:{
-    qwe(){
-        axios.post("/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562728533342&act=goods&op=goodsList",
+  methods: {
+    qwe () {
+      axios.post('/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562728533342&act=goods&op=goodsList',
         `provinc=110&city=110100000000&keyword=${encodeURIComponent(localStorage.getItem('searchResult'))}&page=1&coupon_id=&sorted=${this.sorted}&sequence=${this.sequence}&start_price=0&ent_price=0&goods_from=0&key=&store_id=`
-        ).then(res => {
+      ).then(res => {
         this.datalist = res.data.datas.list
-        console.log(this.datalist)
-        })
+      })
     },
-    goSearch(){
+    goSearch () {
       this.$router.push('/search')
     },
-    goHome(){
-        this.$router.push('/home')
+    goHome () {
+      this.$router.push('/home')
     },
-    goGood(){
-        this.$router.push('/goodsdetail/:gcid')
+    goGood (id) {
+      this.$router.push(`/goodsdetail/${id}`)
     },
-    all(){
-        this.sorted=4,
-        this.sequence=0
+    all () {
+      this.sorted = 4,
+      this.sequence = 0
+      this.qwe()
+    },
+    sell () {
+      this.sorted = 1,
+      this.sequence = 0
+      this.qwe()
+    },
+    price () {
+      if (this.sequence === 0) {
+        this.sorted = 3,
+        this.sequence = 1
         this.qwe()
-    },
-    sell(){
-        this.sorted=1,
-        this.sequence=0
+      } else {
+        this.sorted = 3,
+        this.sequence = 0
         this.qwe()
-    },
-    price(){
-        if(this.sequence === 0){
-            this.sorted=3,
-            this.sequence=1
-            this.qwe()
-        }
-        else{
-            this.sorted=3,
-            this.sequence=0
-            this.qwe()
-        }
-    }  
-  } 
+      }
+    }
+  }
 }
 </script>
 

@@ -2,10 +2,10 @@
   <div class="recommand">
     <p>为你推荐</p>
     <ul v-if="datalist.length">
-      <li v-for="data in selectData">
-        <img :src="data.datas.goods_info.goods_image" />
-        <p>{{ data.datas.goods_info.goods_name }}</p>
-        <p>¥{{ data.datas.goods_info.goods_price }}</p>
+      <li v-for="(data, index) in selectData" :key="index" @click="handleLiClick(data.goods_id)">
+        <img :src="data.goods_image" />
+        <p>{{ data.goods_name }}</p>
+        <p>¥{{ data.goods_price }}</p>
       </li>
     </ul>
     <p>已经到底了</p>
@@ -17,6 +17,8 @@
 import axios from 'axios'
 
 export default {
+
+  props: ['gcid'],
 
   data () {
     return {
@@ -31,9 +33,19 @@ export default {
   },
 
   mounted () {
-    axios.get('/test.json').then(res => {
-      this.datalist = res.data
+    axios.post('/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562728872841&act=mobile_goods_detail&op=getRecommentDetail',
+      `gc_id=${this.gcid}&province_id=140&city_id=140100000000&key=636e27f7c9006edc952c69b12c7b0a6d`
+    ).then(res => {
+      this.datalist = res.data.datas.recommendGoods
     })
+  },
+
+  methods: {
+    handleLiClick (gcid) {
+      this.$router.push(`/goodsdetail/${gcid}`)
+      this.$emit('myevent', gcid)
+      // location.reload();
+    }
   }
 }
 </script>

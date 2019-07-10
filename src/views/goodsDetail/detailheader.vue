@@ -44,6 +44,7 @@ export default {
     position: sticky;
     top: 0;
     left: 0;
+    z-index: 1;
     background-color: white;
     button {
       width: .2rem;

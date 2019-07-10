@@ -56,11 +56,10 @@ export default {
       this.searchText = ''
     },
     goback () {
-        window.history.back(-1)
+      window.history.back(-1)
     },
     goSearch () {
       this.$router.push('/SearchResult')
-      console.log(this.searchText)
       localStorage.setItem('searchResult', `${this.searchText}`)
     }
   },
