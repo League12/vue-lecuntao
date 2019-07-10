@@ -23,7 +23,7 @@ export default {
       this.isActive = data
     },
     handlebtnClick () {
-      this.$router.push('/goodslist')
+      window.history.back(-1);
     }
   }
 }
