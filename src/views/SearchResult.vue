@@ -105,6 +105,11 @@ export default {
         font-size: .15rem;
         &>div{
             height:.6rem;
+            position: fixed;
+            z-index: 10;
+            top:0;
+            width:100%;
+            background: #fff;
             &>input{
                 width: 3rem;
                 height: .3rem;
@@ -128,12 +133,16 @@ export default {
         &>ul:nth-of-type(1){
             height: .45rem;
             width: 100%;
+            position: fixed;
+            z-index: 10;
+            top:.6rem;
             &>li{
                 width: 25%;
                 height: 100%;
                 float: left;
                 text-align: center;
                 line-height: .45rem;
+                background: #fff;
                 &>span{
                     width: .2rem;
                     display: inline-block;
@@ -147,6 +156,7 @@ export default {
             }
         }
         &>ul:nth-of-type(2){
+          margin-top:1.05rem;
             &>li{
                 height: 1.25rem;
                 border-bottom: 1px solid #ccc;
