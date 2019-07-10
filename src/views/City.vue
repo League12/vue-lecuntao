@@ -27,7 +27,7 @@ export default {
   methods: {
     handleClick (id, city) {
       localStorage.setItem('city_id', `${id}`)
-      localStorage.setItem('city_name', `${City}`)
+      localStorage.setItem('city_name', `${city}`)
       this.$router.push('/home')
     },
     backClick () {
