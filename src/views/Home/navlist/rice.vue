@@ -49,7 +49,7 @@ export default {
       this.$router.push(`/goodsdetail/${gcid}`)
     }
   }
-  
+
 }
 </script>
 <style lang="scss" scoped>

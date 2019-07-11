@@ -23,7 +23,7 @@ export default {
       this.isActive = data
     },
     handlebtnClick () {
-      window.history.back(-1);
+      window.history.back(-1)
     }
   }
 }

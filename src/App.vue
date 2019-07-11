@@ -8,38 +8,37 @@
 
 <script>
 
+import axios from 'axios'
+import footerbar from './views/Footerbar'
+import backtop from './views/goodslist/Backtop'
 
-  import axios from 'axios';
-  import footerbar from './views/Footerbar';
-  import backtop from './views/goodslist/Backtop';
-
-  export default {
-    data() {
-      return {
-        isHiddenBacktop: false
-      }
-    },
-
-    mounted () {
-      window.addEventListener("scroll", this.backtop, false);
-    },
-
-    methods: {
-      backtop () {
-        let scrollTop = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop;
-        if (scrollTop >= 2000) {
-          this.isHiddenBacktop = true;
-        } else if (scrollTop <= 1000) {
-          this.isHiddenBacktop = false;
-        }
-      }
-    },
-
-    components: {
-      footerbar,
-      backtop
+export default {
+  data () {
+    return {
+      isHiddenBacktop: false
     }
+  },
+
+  mounted () {
+    window.addEventListener('scroll', this.backtop, false)
+  },
+
+  methods: {
+    backtop () {
+      let scrollTop = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop
+      if (scrollTop >= 2000) {
+        this.isHiddenBacktop = true
+      } else if (scrollTop <= 1000) {
+        this.isHiddenBacktop = false
+      }
+    }
+  },
+
+  components: {
+    footerbar,
+    backtop
   }
+}
 
 </script>
 

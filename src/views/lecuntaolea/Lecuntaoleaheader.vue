@@ -9,13 +9,13 @@
 
 <script>
 
-  export default {
-    methods: {
-      handleBack () {
-        window.history.back(-1);
-      }
+export default {
+  methods: {
+    handleBack () {
+      window.history.back(-1)
     }
   }
+}
 </script>
 
 <style lang="scss" scoped>

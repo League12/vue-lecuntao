@@ -210,79 +210,75 @@
       <img src="/imgs/league/fp_bg13.jpg" alt="">
     </footer>
 
-
-
   </div>
 </template>
 
 <script>
 
-  import lecuntaoheader from './lecuntaolea/Lecuntaoleaheader';
-  import Swiper from 'swiper';
-  import 'swiper/dist/css/swiper.min.css'
-  import axios from 'axios'
+import lecuntaoheader from './lecuntaolea/Lecuntaoleaheader'
+import Swiper from 'swiper'
+import 'swiper/dist/css/swiper.min.css'
+import axios from 'axios'
 
+export default {
 
-  export default {
-
-    data() {
-      return {
-        datalist: [],
-      }
-    },
-
-    computed: {
-      getfpdatas_1() {
-        return this.datalist.filter((item, index) => index < 5);
-      },
-      getfpdatas_2() {
-        return this.datalist.filter((item, index) => {return index >= 5 && index <= 12 });
-      },
-      getfpdatas_3() {
-        return this.datalist.filter((item, index) => {return index >= 13 && index <= 20 });
-      },
-      getfpdatas_4() {
-        return this.datalist.filter((item, index) => {return index >= 21 && index <= 30 });
-      },
-    },
-
-    mounted() {
-      this.$store.commit("toggleFooterbar", false);
-
-      axios.get("/mobile/index.php?act=index&op=special&special_id=259&act=index&op=special&special_id=259")
-        .then(res => {
-          this.datalist = res.data.datas.ntj_list;
-
-          this.$nextTick(function () {
-            let swiper1 = new Swiper('.fp-list-swiper', {
-              slidesPerView: 2,
-              spaceBetween: 10,
-            });
-
-            let swiper2 = new Swiper('.fp-event-list-swiper', {
-              slidesPerView: 1,
-              loop: true,
-            });
-          });
-        console.log(res);
-      });
-
-    },
-
-    methods: {
-      handleImgClick(goodid) {
-        this.$router.push(`/goodsdetail/${goodid}`);
-      }
-    },
-
-    destroyed() {
-      this.$store.commit("toggleFooterbar", true);
-    },
-
-    components: {
-      lecuntaoheader
+  data () {
+    return {
+      datalist: []
     }
+  },
+
+  computed: {
+    getfpdatas_1 () {
+      return this.datalist.filter((item, index) => index < 5)
+    },
+    getfpdatas_2 () {
+      return this.datalist.filter((item, index) => { return index >= 5 && index <= 12 })
+    },
+    getfpdatas_3 () {
+      return this.datalist.filter((item, index) => { return index >= 13 && index <= 20 })
+    },
+    getfpdatas_4 () {
+      return this.datalist.filter((item, index) => { return index >= 21 && index <= 30 })
+    }
+  },
+
+  mounted () {
+    this.$store.commit('toggleFooterbar', false)
+
+    axios.get('/mobile/index.php?act=index&op=special&special_id=259&act=index&op=special&special_id=259')
+      .then(res => {
+        this.datalist = res.data.datas.ntj_list
+
+        this.$nextTick(function () {
+          let swiper1 = new Swiper('.fp-list-swiper', {
+            slidesPerView: 2,
+            spaceBetween: 10
+          })
+
+          let swiper2 = new Swiper('.fp-event-list-swiper', {
+            slidesPerView: 1,
+            loop: true
+          })
+        })
+        console.log(res)
+      })
+  },
+
+  methods: {
+    handleImgClick (goodid) {
+      this.$router.push(`/goodsdetail/${goodid}`)
+    }
+  },
+
+  destroyed () {
+    this.$store.commit('toggleFooterbar', true)
+  },
+
+  components: {
+    lecuntaoheader
   }
+}
 
 </script>
 
@@ -578,6 +574,5 @@
       }
     }
   }
-
 
 </style>

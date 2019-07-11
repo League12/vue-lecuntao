@@ -79,44 +79,42 @@
   </div>
 </template>
 <script>
-import axios from "axios";
+import axios from 'axios'
 import navbar from '@/views/Home/features/navbar'
 export default {
-  data() {
+  data () {
     return {
       datalist: [],
       itemlist: []
-    };
-  },
-  components:{
-    navbar
-  },
-  mounted() {
-    axios({
-      url:
-        "/lct?api_version=te_1.0.0&platType=2&client=wap&isEncry=0&time=1562762233743&act=world&op=axios_pavilion"
-    }).then(res => {
-
-      this.datalist = res.data.datas;
-    });
-    axios({
-      url:
-        "/lct?api_version=te_1.0.0&platType=2&client=wap&isEncry=0&time=1562762233743&act=world&op=axios_floors"
-    }).then(res => {
-
-      this.itemlist = res.data.datas.goodslist;
-    });
-    this.$store.commit("toggleFooterbar",false)
-  },
-  methods: {
-    previous() {
-      window.history.back(-1);
     }
   },
-  destroyed(){
-    this.$store.commit("toggleFooterbar",true)
+  components: {
+    navbar
+  },
+  mounted () {
+    axios({
+      url:
+        '/lct?api_version=te_1.0.0&platType=2&client=wap&isEncry=0&time=1562762233743&act=world&op=axios_pavilion'
+    }).then(res => {
+      this.datalist = res.data.datas
+    })
+    axios({
+      url:
+        '/lct?api_version=te_1.0.0&platType=2&client=wap&isEncry=0&time=1562762233743&act=world&op=axios_floors'
+    }).then(res => {
+      this.itemlist = res.data.datas.goodslist
+    })
+    this.$store.commit('toggleFooterbar', false)
+  },
+  methods: {
+    previous () {
+      window.history.back(-1)
+    }
+  },
+  destroyed () {
+    this.$store.commit('toggleFooterbar', true)
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
