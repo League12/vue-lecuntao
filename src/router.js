@@ -26,6 +26,7 @@ import humanities from './views/Home/features/humanities'
 import tourism from './views/Home/features/tourism'
 import county from './views/Home/county'
 import lecuntaolea from './views/Lecuntaolea'
+import cart from './views/Cart'
 
 Vue.use(Router)
 
@@ -42,7 +43,7 @@ export default new Router({
     },
     {
       path: '/shopcar',
-      component: shopcar
+      component: cart
     },
     {
       path: '/person',
@@ -153,6 +154,6 @@ export default new Router({
     {
       path: '/lecuntaolea',
       component: lecuntaolea
-    }
+    },
   ]
 })
