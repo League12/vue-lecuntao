@@ -1,7 +1,7 @@
 <template>
   <div class="tese">
     <div class="img">
-      <img src="../../imgs/icon_teseguan.png" alt />
+      <img src="/imgs/annan/icon_teseguan.png" alt />
       <img
         src="https://s0.lecuntao.com/mobile_2.3.0/resource/images/index/lct_wap_tsg.jpg?date=20190708"
         alt
@@ -21,7 +21,7 @@
           <p>{{data.goods_price}}</p>
         </div>
         <div class="swiper-slide">
-          <img src="../../imgs/img_le6ji_see_all.png" alt />
+          <img src="/imgs/annan/img_le6ji_see_all.png" alt />
         </div>
       </div>
     </div>
@@ -36,16 +36,10 @@ import { Swipe, SwipeItem } from 'mint-ui'
 export default {
   data () {
     return {
-      url: [],
       list: []
     }
   },
   mounted () {
-    axios({
-      url: '/resource/images/index/icon_teseguan.png?lv=46f429c64a'
-    }).then(res => {
-      this.url = res.data
-    })
     axios({
       url:
         '/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562563317957&act=index&op=index&key='

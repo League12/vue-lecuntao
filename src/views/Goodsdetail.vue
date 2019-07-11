@@ -95,7 +95,6 @@ export default {
       `city_id=${this.cid}&province_id=${this.pid}&goods_id=${this.$route.params.gcid}&key=636e27f7c9006edc952c69b12c7b0a6d`
     ).then(res => {
       this.datalist = res.data.datas
-
       this.$nextTick(function () {
         new Swiper('.banner', {
           pagination: {
@@ -159,7 +158,7 @@ export default {
       z-index: 0;
       img {
         width: 100%;
-        height: 100%;
+        height: 3.74rem;
       }
     }
 
@@ -175,8 +174,11 @@ export default {
         padding-left: .09rem;
         display: flex;
         align-items: center;
+        overflow: hidden;
 
         p:nth-of-type(1) {
+          height: .43rem;
+          line-height: .21rem;
           width: 2.9rem;
           font-weight: 100;
           color: #252525;
