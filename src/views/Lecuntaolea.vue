@@ -2,6 +2,7 @@
   <div class="le-cun-tao" v-if="datalist.length">
 
     <lecuntaoheader></lecuntaoheader>
+
     <div class="le-cun-banner">
       <img src="/imgs/league/banner.jpg" alt="">
     </div>
@@ -264,7 +265,6 @@
               loop: true,
             });
           });
-        console.log(res);
       });
 
     },

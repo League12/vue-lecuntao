@@ -53,7 +53,6 @@ export default {
       })
     },
     loadMore () {
-      console.log('daole')
       this.loading = true
       this.current++
       axios.post(

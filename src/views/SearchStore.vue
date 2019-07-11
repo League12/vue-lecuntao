@@ -40,7 +40,6 @@
             this.$router.push('/home')
             },
             loadMore () {
-                console.log('daole')
                 this.loading = true
                 this.current++
                 axios.post(
@@ -60,7 +59,6 @@
                 `page_num=20&page=1&store_name=${encodeURIComponent(localStorage.getItem('searchResult'))}&is_sales=1&key=`
             ).then(res => {
                 this.datalist = res.data.datas.store
-                console.log(this.datalist)
             })
         },
         destroyed () {
