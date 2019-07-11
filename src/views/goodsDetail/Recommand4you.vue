@@ -33,8 +33,10 @@ export default {
   },
 
   mounted () {
+    let pid = localStorage.getItem("province_id") || 140;
+    let cid = localStorage.getItem("city_id") || 140100000000;
     axios.post('/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562728872841&act=mobile_goods_detail&op=getRecommentDetail',
-      `gc_id=${this.gcid}&province_id=140&city_id=140100000000&key=636e27f7c9006edc952c69b12c7b0a6d`
+      `gc_id=${this.gcid}&province_id=${pid}&city_id=${cid}&key=636e27f7c9006edc952c69b12c7b0a6d`
     ).then(res => {
       this.datalist = res.data.datas.recommendGoods
     })

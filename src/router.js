@@ -10,6 +10,7 @@ import City from './views/City'
 import selectedlist from './views/goodslist/selectedlist'
 import Search from './views/Search'
 import SearchResult from './views/SearchResult'
+import SearchStore from './views/SearchStore'
 import headerbar from './views/headerbar'
 import setting from './views/Setting'
 import order from './views/Order'
@@ -24,6 +25,8 @@ import farmers from './views/Home/features/farmers'
 import humanities from './views/Home/features/humanities'
 import tourism from './views/Home/features/tourism'
 import county from './views/Home/county'
+import lecuntaolea from './views/Lecuntaolea'
+
 Vue.use(Router)
 
 export default new Router({
@@ -74,6 +77,10 @@ export default new Router({
     {
       path: '/searchResult',
       component: SearchResult
+    },
+    {
+      path: '/searchStore',
+      component: SearchStore
     },
     {
       path: '/headerbar',
@@ -142,6 +149,10 @@ export default new Router({
     {
       path:'/county',
       component:county
+    },
+    {
+      path: '/lecuntaolea',
+      component: lecuntaolea
     }
   ]
 })

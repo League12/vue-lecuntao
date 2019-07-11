@@ -49,7 +49,6 @@ export default {
   },
   methods: {
     loadMore () {
-
       this.loading = true
 
       this.current++
@@ -61,7 +60,6 @@ export default {
         .then(res => {
 
         this.datalist = [...this.datalist,...res.data.datas.list]
-
         this.loading = false;
       });
     },

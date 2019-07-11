@@ -79,58 +79,67 @@ import 'swiper/dist/css/swiper.min.css'
 
 export default {
 
-  data () {
-    return {
-      datalist: null
-    }
-  },
 
-  mounted () {
-    this.$store.state.isHiddenFooterbar = false
-    axios.post('/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562728872841&act=mobile_goods_detail&op=getGoodsInfo',
-      `city_id=140100000000&province_id=140&goods_id=${this.$route.params.gcid}&key=636e27f7c9006edc952c69b12c7b0a6d`
-    ).then(res => {
-      this.datalist = res.data.datas
-
-      this.$nextTick(function () {
-        new Swiper('.banner', {
-          pagination: {
-            el: '.swiper-pagination',
-            clickable: true
-          }
-        })
-      })
-    })
-  },
-
-  destroyed () {
-    this.$store.state.isHiddenFooterbar = true
-  },
-
-  components: {
-    detailheader,
-    recommand4you,
-    goodsdetailfooter,
-    addshopcar
-  },
-
-  methods: {
-    getRandom (min, max) {
-      return Math.floor(Math.random() * (max - min) + min)
+    data() {
+      return {
+        datalist: null,
+        pid: 110,
+        cid: 110100000000
+      }
     },
 
-    handleevent (ev) {
-      axios.post('/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562728872841&act=mobile_goods_detail&op=getGoodsInfo',
-        `city_id=140100000000&province_id=140&goods_id=${ev}&key=636e27f7c9006edc952c69b12c7b0a6d`
-      ).then(res => {
-        this.datalist = res.data.datas
-        document.documentElement.scrollTop = 0
-        document.body.scrollTop = 0
-      })
+    mounted() {
+      this.pid = localStorage.getItem("province_id") || 110;
+      this.cid = localStorage.getItem("city_id") || 110100000000;
+      this.$store.state.isHiddenFooterbar = false;
+        axios.post("/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562728872841&act=mobile_goods_detail&op=getGoodsInfo",
+          `city_id=${this.cid}&province_id=${this.pid}&goods_id=${this.$route.params.gcid}&key=636e27f7c9006edc952c69b12c7b0a6d`
+        ).then(res => {
+          this.datalist = res.data.datas;
+
+          this.$nextTick(function () {
+            new Swiper(".banner",{
+              pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+              },
+            });
+          });
+        });
+
+      },
+
+
+    destroyed () {
+      this.$store.state.isHiddenFooterbar = true
+    },
+
+    components: {
+      detailheader,
+      recommand4you,
+      goodsdetailfooter,
+      addshopcar
+    },
+
+    methods: {
+      getRandom(min, max) {
+        return Math.floor(Math.random() * (max - min) + min)
+      },
+
+      handleevent(ev) {
+        axios.post("/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562728872841&act=mobile_goods_detail&op=getGoodsInfo",
+          `city_id=${this.cid}&province_id=${this.pid}&goods_id=${ev}&key=636e27f7c9006edc952c69b12c7b0a6d`
+        ).then(res => {
+          this.datalist = res.data.datas;
+          document.documentElement.scrollTop = 0;
+          document.body.scrollTop = 0;
+        });
+      },
+
     }
   }
 
-}
+
 
 </script>
 

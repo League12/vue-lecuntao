@@ -59,8 +59,12 @@ export default {
       window.history.back(-1)
     },
     goSearch () {
-      this.$router.push('/SearchResult')
       localStorage.setItem('searchResult', `${this.searchText}`)
+      if(this.leixing === true){
+        this.$router.push('/SearchResult')
+      }else{
+        this.$router.push('/SearchStore')
+      }
     }
   },
   mounted () {
