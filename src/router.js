@@ -18,7 +18,12 @@ import orderdelivergoods from './views/order/Orderdelivergoods'
 import orderfinal from './views/order/Orderfinal'
 import orderpayment from './views/order/Orderpayment'
 import orderreceivinggoods from './views/order/Orderreceivinggoods'
-
+import leliuji from './views/Home/leliuji'
+import features from './views/Home/features'
+import farmers from './views/Home/features/farmers'
+import humanities from './views/Home/features/humanities'
+import tourism from './views/Home/features/tourism'
+import county from './views/Home/county'
 Vue.use(Router)
 
 export default new Router({
@@ -107,6 +112,36 @@ export default new Router({
           redirect: '/order/all'
         }
       ]
+    },
+    {
+      path:'/leliuji',
+      component:leliuji
+    },
+    {
+      path:'/features',
+      component:features,
+      children:[
+        {
+          path:'/features/farmers',
+          component:farmers
+        },
+        {
+          path:'/features/humanities',
+          component:humanities
+        },
+        {
+          path:'/features/tourism',
+          component:tourism
+        },
+        {
+          path: '',
+          redirect: '/features/farmers'
+        }
+      ]
+    },
+    {
+      path:'/county',
+      component:county
     }
   ]
 })

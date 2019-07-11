@@ -48,7 +48,6 @@ export default {
         '/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562563317957&act=index&op=index&key='
     }).then(res => {
       this.list = res.data.datas.le6ji.recommend_goods
-      // console.log(this.list);
       this.$nextTick(() => {
         var swiper = new Swiper('.s1', {
           slidesPerView: 3,

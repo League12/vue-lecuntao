@@ -19,10 +19,6 @@ export default {
   mounted () {
     window.onscroll = this.handlescroll
   },
-
-  //   methods: {
-
-  //   },
   beforeDestroy () {
     window.onscroll = null
   }
