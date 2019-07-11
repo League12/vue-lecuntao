@@ -18,6 +18,7 @@ import orderdelivergoods from './views/order/Orderdelivergoods'
 import orderfinal from './views/order/Orderfinal'
 import orderpayment from './views/order/Orderpayment'
 import orderreceivinggoods from './views/order/Orderreceivinggoods'
+import lecuntaolea from './views/Lecuntaolea'
 
 Vue.use(Router)
 
@@ -107,6 +108,10 @@ export default new Router({
           redirect: '/order/all'
         }
       ]
+    },
+    {
+      path: '/lecuntaolea',
+      component: lecuntaolea
     }
   ]
 })

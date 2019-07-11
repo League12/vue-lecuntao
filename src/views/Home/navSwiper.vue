@@ -10,10 +10,10 @@
       <div class="swiper-slide">
         <img src="https://s0.lecuntao.com/mobile_2.3.0/resource/images/nhj_icon/icon_index_lexianyu.jpg?date=20190708" alt /> 乐县域
       </div>
-      <div class="swiper-slide">
+      <div class="swiper-slide" @click="handleDivClick">
         <img src="https://s0.lecuntao.com/mobile_2.3.0/resource/images/nhj_icon/icon_fp_icon.jpg?date=20190708" alt /> 特色扶贫
       </div>
-      <div class="swiper-slide">
+      <div class="swiper-slide" @click="handleDivClick">
         <img src="https://s0.lecuntao.com/mobile_2.3.0/resource/images/nhj_icon/iconFupin.jpg?date=20190708" alt /> 广东优品
       </div>
     </div>
@@ -36,6 +36,12 @@ export default {
       freeMode: true
 
     })
+  },
+
+  methods: {
+    handleDivClick() {
+      this.$router.push('/lecuntaolea');
+    }
   }
 }
 </script>

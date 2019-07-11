@@ -158,7 +158,7 @@ export default {
     },
 
     handleBack () {
-      this.$router.push('/goodslist')
+      window.history.back(-1);
     },
     handleMainClick (goodsid) {
       this.$router.push({ path: `/goodsdetail/${goodsid}` })
