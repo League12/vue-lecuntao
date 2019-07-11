@@ -57,9 +57,9 @@ export default {
       })
     })
   },
-  methods:{
-    
-    tiaoxiangqing(gcid){
+  methods: {
+
+    tiaoxiangqing (gcid) {
       this.$router.push(`/goodsdetail/${gcid}`)
     }
   }

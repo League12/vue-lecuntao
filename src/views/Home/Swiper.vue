@@ -8,7 +8,7 @@
 </template>
 <script>
 import Vue from 'vue'
-import Swiper from 'swiper' 
+import Swiper from 'swiper'
 import 'swiper/dist/css/swiper.css'
 
 import { Swipe, SwipeItem } from 'mint-ui'

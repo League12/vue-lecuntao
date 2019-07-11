@@ -60,9 +60,9 @@ export default {
     },
     goSearch () {
       localStorage.setItem('searchResult', `${this.searchText}`)
-      if(this.leixing === true){
+      if (this.leixing === true) {
         this.$router.push('/SearchResult')
-      }else{
+      } else {
         this.$router.push('/SearchStore')
       }
     }

@@ -56,14 +56,14 @@ export default {
       this.loading = true
       this.current++
       axios.post(
-          '/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562728533342&act=goods&op=goodsList',
-          `provinc=110&city=110100000000&keyword=${encodeURIComponent(localStorage.getItem('searchResult'))}&page=${this.current}&coupon_id=&sorted=${this.sorted}&sequence=${this.sequence}&start_price=0&ent_price=0&goods_from=0&key=&store_id=`
-          )
-          .then(res => {
-          this.datalist = [...this.datalist,...res.data.datas.list]
-          this.loading = false;
-      });
-  },
+        '/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562728533342&act=goods&op=goodsList',
+        `provinc=110&city=110100000000&keyword=${encodeURIComponent(localStorage.getItem('searchResult'))}&page=${this.current}&coupon_id=&sorted=${this.sorted}&sequence=${this.sequence}&start_price=0&ent_price=0&goods_from=0&key=&store_id=`
+      )
+        .then(res => {
+          this.datalist = [...this.datalist, ...res.data.datas.list]
+          this.loading = false
+        })
+    },
     goSearch () {
       this.$router.push('/search')
     },

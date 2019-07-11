@@ -9,11 +9,11 @@
 </template>
 <script>
 export default {
-    methods:{
-        previous(){
-            window.history.back(-1)
-        }
+  methods: {
+    previous () {
+      window.history.back(-1)
     }
+  }
 }
 </script>
 

@@ -67,10 +67,10 @@ export default {
   },
 
   mounted () {
-    this.pid = localStorage.getItem("province_id") || 110;
-    this.cid = localStorage.getItem("city_id") || 110100000000;
+    this.pid = localStorage.getItem('province_id') || 110
+    this.cid = localStorage.getItem('city_id') || 110100000000
     this.$store.commit('toggleFooterbar', false)
-    this.getAllData();
+    this.getAllData()
   },
 
   destroyed () {
@@ -117,14 +117,14 @@ export default {
       this.sequence = 0
       this.sort = 4
       this.page = 1
-      this.getlist();
+      this.getlist()
     },
 
     getSorted_1 () {
       this.prisort = 0
       this.sort = 1
       this.page = 1
-      this.getlist();
+      this.getlist()
     },
 
     getSorted_2 () {
@@ -133,11 +133,11 @@ export default {
       if (this.prisort === 0 || this.prisort === 2) {
         this.prisort = 1
         this.sequence = 1
-        this.getlist();
+        this.getlist()
       } else if (this.prisort === 1) {
         this.prisort = 2
         this.sequence = 0
-        this.getlist();
+        this.getlist()
       }
     },
 
@@ -146,10 +146,10 @@ export default {
       this.page = 1
       this.sort = 2
       this.sequence = 0
-      this.getlist();
+      this.getlist()
     },
 
-    getlist() {
+    getlist () {
       axios({
         url: `/lct?provinc=${this.pid}&city=${this.cid}&keyword=&page=${this.page++}&sorted=${this.sort}&sequence=${this.sequence}&gcId=${JSON.parse(this.$route.params.list).gcid}&workshop=api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562383713084&act=goods&op=goodsList`
       }).then(res => {
@@ -158,7 +158,7 @@ export default {
     },
 
     handleBack () {
-      window.history.back(-1);
+      window.history.back(-1)
     },
     handleMainClick (goodsid) {
       this.$router.push({ path: `/goodsdetail/${goodsid}` })

@@ -11,33 +11,32 @@
   </div>
 </template>
 <script>
-import axios from "axios";
+import axios from 'axios'
 export default {
-  data() {
+  data () {
     return {
       datalist: [],
-      tiaolist:[]
-    };
+      tiaolist: []
+    }
   },
-  mounted() {
+  mounted () {
     axios
       .post(
-        "lct?api_version=te_1.0.0&platType=2&client=wap&isEncry=0&time=1562806715633&act=world&op=product_list",
-        "id=4"
+        'lct?api_version=te_1.0.0&platType=2&client=wap&isEncry=0&time=1562806715633&act=world&op=product_list',
+        'id=4'
       )
       .then(res => {
-        
-        this.datalist = res.data.datas[0];
-        this.tiaolist = res.data.datas.category_goods;
-      });
+        this.datalist = res.data.datas[0]
+        this.tiaolist = res.data.datas.category_goods
+      })
   },
   methods: {
-    
-    tiaoxiangqing(gcid){
+
+    tiaoxiangqing (gcid) {
       this.$router.push(`/goodsdetail/${gcid}`)
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

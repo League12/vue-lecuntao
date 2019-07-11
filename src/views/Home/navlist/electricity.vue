@@ -27,14 +27,14 @@ export default {
       tiaolist: []
     }
   },
-  mounted() {
-    let aaa = localStorage.getItem("province_id") || 450;
-    let bbb = localStorage.getItem("city_id") || 451000000000
+  mounted () {
+    let aaa = localStorage.getItem('province_id') || 450
+    let bbb = localStorage.getItem('city_id') || 451000000000
     axios.post(
-        "/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562586783511&act=index&op=index&key=",
-        `provinc=${aaa}&city=${bbb}&page=1&pageSize=10`
+      '/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562586783511&act=index&op=index&key=',
+      `provinc=${aaa}&city=${bbb}&page=1&pageSize=10`
     ).then(res => {
-      this.datalist = res.data.datas.category_goods[0].goods_list;
+      this.datalist = res.data.datas.category_goods[0].goods_list
       this.tiaolist = res.data.datas.category_goods
     })
   },

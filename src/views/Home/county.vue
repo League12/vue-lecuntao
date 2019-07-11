@@ -20,15 +20,15 @@
 </template>
 <script>
 export default {
-    mounted(){
-        this.$store.commit("toggleFooterbar",false)
-    },
+  mounted () {
+    this.$store.commit('toggleFooterbar', false)
+  },
   methods: {
-    previous() {
-      window.history.back(-1);
+    previous () {
+      window.history.back(-1)
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

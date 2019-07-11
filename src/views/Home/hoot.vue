@@ -58,12 +58,11 @@ export default {
           `provinc=140&city=140100000000&page=${this.current}&pageSize=10`
         )
         .then(res => {
-
-        this.datalist = [...this.datalist,...res.data.datas.list]
-        this.loading = false;
-      });
+          this.datalist = [...this.datalist, ...res.data.datas.list]
+          this.loading = false
+        })
     },
-    tiaoxiangqing(gcid){
+    tiaoxiangqing (gcid) {
       this.$router.push(`/goodsdetail/${gcid}`)
     }
   }

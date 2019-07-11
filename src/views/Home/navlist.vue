@@ -79,8 +79,8 @@ export default {
         document.documentElement.scrollTop = 2538
       } else if (index === 4) {
         document.documentElement.scrollTop = 3087
-      }else if (index === 0) {
-        document.documentElement.scrollTop = 883 
+      } else if (index === 0) {
+        document.documentElement.scrollTop = 883
       }
     },
     handleScroll () {

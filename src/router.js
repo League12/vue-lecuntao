@@ -121,24 +121,24 @@ export default new Router({
       ]
     },
     {
-      path:'/leliuji',
-      component:leliuji
+      path: '/leliuji',
+      component: leliuji
     },
     {
-      path:'/features',
-      component:features,
-      children:[
+      path: '/features',
+      component: features,
+      children: [
         {
-          path:'/features/farmers',
-          component:farmers
+          path: '/features/farmers',
+          component: farmers
         },
         {
-          path:'/features/humanities',
-          component:humanities
+          path: '/features/humanities',
+          component: humanities
         },
         {
-          path:'/features/tourism',
-          component:tourism
+          path: '/features/tourism',
+          component: tourism
         },
         {
           path: '',
@@ -147,8 +147,8 @@ export default new Router({
       ]
     },
     {
-      path:'/county',
-      component:county
+      path: '/county',
+      component: county
     },
     {
       path: '/lecuntaolea',

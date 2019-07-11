@@ -18,53 +18,53 @@
 </template>
 
 <script>
-    import { InfiniteScroll } from 'mint-ui'
-    import Vue from 'vue'
-    import axios from 'axios'
+import { InfiniteScroll } from 'mint-ui'
+import Vue from 'vue'
+import axios from 'axios'
 
-    Vue.use(InfiniteScroll)
-    export default {
-    data () {
-        return {
-        datalist: [],
-        loading: false,
-        current: 1,
-        searchText: localStorage.getItem('searchResult')
-        }
-    },
-        methods:{
-            goSearch () {
-            this.$router.push('/search')
-            },
-            goHome () {
-            this.$router.push('/home')
-            },
-            loadMore () {
-                this.loading = true
-                this.current++
-                axios.post(
-                    '/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562759145534&act=mobile_store&op=getStore',
-                    `page_num=20&page=${this.current}&store_name=${encodeURIComponent(localStorage.getItem('searchResult'))}&is_sales=1&key=`
-                    )
-                    .then(res => {
-                    this.datalist = [...this.datalist,...res.data.datas.store]
-                    this.loading = false;
-                });
-            }
-        },
-        mounted(){
-            this.$store.state.isHiddenFooterbar = false
-            axios.post(
-                '/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562756236749&act=mobile_store&op=getStore',
-                `page_num=20&page=1&store_name=${encodeURIComponent(localStorage.getItem('searchResult'))}&is_sales=1&key=`
-            ).then(res => {
-                this.datalist = res.data.datas.store
-            })
-        },
-        destroyed () {
-            this.$store.state.isHiddenFooterbar = true
-        }
+Vue.use(InfiniteScroll)
+export default {
+  data () {
+    return {
+      datalist: [],
+      loading: false,
+      current: 1,
+      searchText: localStorage.getItem('searchResult')
     }
+  },
+  methods: {
+    goSearch () {
+      this.$router.push('/search')
+    },
+    goHome () {
+      this.$router.push('/home')
+    },
+    loadMore () {
+      this.loading = true
+      this.current++
+      axios.post(
+        '/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562759145534&act=mobile_store&op=getStore',
+        `page_num=20&page=${this.current}&store_name=${encodeURIComponent(localStorage.getItem('searchResult'))}&is_sales=1&key=`
+      )
+        .then(res => {
+          this.datalist = [...this.datalist, ...res.data.datas.store]
+          this.loading = false
+        })
+    }
+  },
+  mounted () {
+    this.$store.state.isHiddenFooterbar = false
+    axios.post(
+      '/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562756236749&act=mobile_store&op=getStore',
+      `page_num=20&page=1&store_name=${encodeURIComponent(localStorage.getItem('searchResult'))}&is_sales=1&key=`
+    ).then(res => {
+      this.datalist = res.data.datas.store
+    })
+  },
+  destroyed () {
+    this.$store.state.isHiddenFooterbar = true
+  }
+}
 </script>
 
     <style lang="scss" scoped>
