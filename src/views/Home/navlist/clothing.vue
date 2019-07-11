@@ -2,7 +2,7 @@
   <div>
     <div class="elect">
       <p>服装城</p>
-      <p@click="tiaoclick">更多<img src="../../../imgs/icon_more.png" alt />
+      <p@click="tiaoclick">更多<img src="/imgs/annan/icon_more.png" alt />
       </p>
     </div>
     <ul class="goods">

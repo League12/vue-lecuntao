@@ -4,7 +4,7 @@
       <p>米面油</p>
       <p @click="tiaoclick">
         更多
-        <img src="../../../imgs/icon_more.png" alt />
+        <img src="/imgs/annan/icon_more.png" alt />
       </p>
     </div>
     <ul class="goods">

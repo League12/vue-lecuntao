@@ -10,11 +10,11 @@
       <P>乐县域</P>
     </div>
     <div class="dwn">
-      <img src="../../imgs/logo_lexianyu.png" alt />
+      <img src="/imgs/annan/logo_lexianyu.png" alt />
       <p>乐县域是服务乐县域商家进货的平台</p>
       <p>如果您需进货,可以通过以下方式获取乐县域app</p>
       <p>免费获取APP</p>
-      <img src="../../imgs/img_lexianyu.png" alt />
+      <img src="/imgs/annan/img_lexianyu.png" alt />
     </div>
   </div>
 </template>

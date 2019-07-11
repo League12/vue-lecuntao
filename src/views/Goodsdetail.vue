@@ -158,7 +158,7 @@ export default {
       z-index: 0;
       img {
         width: 100%;
-        height: 100%;
+        height: 3.74rem;
       }
     }
 
@@ -174,8 +174,11 @@ export default {
         padding-left: .09rem;
         display: flex;
         align-items: center;
+        overflow: hidden;
 
         p:nth-of-type(1) {
+          height: .43rem;
+          line-height: .21rem;
           width: 2.9rem;
           font-weight: 100;
           color: #252525;
