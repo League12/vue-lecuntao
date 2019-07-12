@@ -60,11 +60,15 @@ export default {
       sort: 4,
       page: 1,
       sequence: 0,
-      loading: false
+      loading: false,
+      pid: 110,
+      cid: 110100000000
     }
   },
 
   mounted () {
+    this.pid = localStorage.getItem('province_id') || 110
+    this.cid = localStorage.getItem('city_id') || 110100000000
     this.$store.commit('toggleFooterbar', false)
     this.getAllData()
   },
@@ -77,7 +81,7 @@ export default {
 
     loadMore () {
       axios({
-        url: `/lct?provinc=110&city=110100000000&keyword=&page=${this.page++}&sorted=${this.sort}&sequence=${this.sequence}&gcId=${JSON.parse(this.$route.params.list).gcid}&workshop=api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562373149571&act=goods&op=goodsList`
+        url: `/lct?provinc=${this.pid}&city=${this.cid}&keyword=&page=${this.page++}&sorted=${this.sort}&sequence=${this.sequence}&gcId=${JSON.parse(this.$route.params.list).gcid}&workshop=api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562373149571&act=goods&op=goodsList`
       }).then(res => {
         this.goodslist = [...this.goodslist, ...res.data.datas.list]
       })
@@ -113,22 +117,14 @@ export default {
       this.sequence = 0
       this.sort = 4
       this.page = 1
-      axios({
-        url: `/lct?provinc=110&city=110100000000&keyword=&page=${this.page++}&sorted=${this.sort}&sequence=${this.sequence}&gcId=${JSON.parse(this.$route.params.list).gcid}&workshop=api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562373149571&act=goods&op=goodsList`
-      }).then(res => {
-        this.goodslist = res.data.datas.list
-      })
+      this.getlist()
     },
 
     getSorted_1 () {
       this.prisort = 0
       this.sort = 1
       this.page = 1
-      axios({
-        url: `/lct?provinc=110&city=110100000000&keyword=&page=${this.page++}&sorted=${this.sort}&sequence=${this.sequence}&gcId=${JSON.parse(this.$route.params.list).gcid}&workshop=api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562383394124&act=goods&op=goodsList`
-      }).then(res => {
-        this.goodslist = res.data.datas.list
-      })
+      this.getlist()
     },
 
     getSorted_2 () {
@@ -137,19 +133,11 @@ export default {
       if (this.prisort === 0 || this.prisort === 2) {
         this.prisort = 1
         this.sequence = 1
-        axios({
-          url: `/lct?provinc=110&city=110100000000&keyword=&page=${this.page++}&sorted=${this.sort}&sequence=${this.sequence}&gcId=${JSON.parse(this.$route.params.list).gcid}&workshop=api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562383713084&act=goods&op=goodsList`
-        }).then(res => {
-          this.goodslist = res.data.datas.list
-        })
+        this.getlist()
       } else if (this.prisort === 1) {
         this.prisort = 2
         this.sequence = 0
-        axios({
-          url: `/lct?provinc=110&city=110100000000&keyword=&page=${this.page++}&sorted=${this.sort}&sequence=${this.sequence}&gcId=${JSON.parse(this.$route.params.list).gcid}&workshop=api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562383713084&act=goods&op=goodsList`
-        }).then(res => {
-          this.goodslist = res.data.datas.list
-        })
+        this.getlist()
       }
     },
 
@@ -158,15 +146,19 @@ export default {
       this.page = 1
       this.sort = 2
       this.sequence = 0
+      this.getlist()
+    },
+
+    getlist () {
       axios({
-        url: `/lct?provinc=110&city=110100000000&keyword=&page=${this.page++}&sorted=${this.sort}&sequence=${this.sequence}&gcId=${JSON.parse(this.$route.params.list).gcid}&workshop=api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562383713084&act=goods&op=goodsList`
+        url: `/lct?provinc=${this.pid}&city=${this.cid}&keyword=&page=${this.page++}&sorted=${this.sort}&sequence=${this.sequence}&gcId=${JSON.parse(this.$route.params.list).gcid}&workshop=api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562383713084&act=goods&op=goodsList`
       }).then(res => {
         this.goodslist = res.data.datas.list
       })
     },
 
     handleBack () {
-      this.$router.push('/goodslist')
+      window.history.back(-1)
     },
     handleMainClick (goodsid) {
       this.$router.push({ path: `/goodsdetail/${goodsid}` })

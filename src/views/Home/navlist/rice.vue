@@ -4,7 +4,7 @@
       <p>米面油</p>
       <p @click="tiaoclick">
         更多
-        <img src="../../../imgs/icon_more.png" alt />
+        <img src="/imgs/annan/icon_more.png" alt />
       </p>
     </div>
     <ul class="goods">
@@ -32,26 +32,24 @@ export default {
       url:
         '/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562586783511&act=index&op=index&key='
     }).then(res => {
-      //   console.log(res.data.datas.category_goods[1]);
       this.datalist = res.data.datas.category_goods[2].goods_list
-      //   console.log(this.datalist);
       this.tiaolist = res.data.datas.category_goods
     })
   },
   methods: {
     tiaoclick () {
-      // console.log(this.datalist)
       this.$router.push(
         `/selectedlist/${JSON.stringify({
           gcid: this.tiaolist[2].cate_info.gc_id,
           gcname: this.tiaolist[2].cate_info.cate_name
         })}`
       )
+    },
+    tiaoxiangqing (gcid) {
+      this.$router.push(`/goodsdetail/${gcid}`)
     }
-  },
-  tiaoxiangqing (gcid) {
-    this.$router.push(`/goodsdetail/${gcid}`)
   }
+
 }
 </script>
 <style lang="scss" scoped>

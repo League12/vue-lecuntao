@@ -3,8 +3,6 @@
     <div class="elect">
       <p>热门推荐</p>
       <p>
-        更多
-        <!-- <img src="../../../imgs/icon_more.png" alt /> -->
       </p>
     </div>
     <ul
@@ -46,14 +44,11 @@ export default {
         'provinc=140&city=140100000000&page=1&pageSize=10'
       )
       .then(res => {
-        // console.log(res.data);
-        // console.log(res.data.datas.list);
         this.datalist = res.data.datas.list
       })
   },
   methods: {
     loadMore () {
-      console.log('daole')
       this.loading = true
 
       this.current++
@@ -67,6 +62,7 @@ export default {
         // console.log(res.data.datas.list);
           this.datalist = [...this.datalist, ...res.data.datas.list]
           console.log(this.datalist)
+          this.datalist = [...this.datalist, ...res.data.datas.list]
           this.loading = false
         })
     },

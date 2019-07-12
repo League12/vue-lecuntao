@@ -1,7 +1,7 @@
 <template>
   <div class="le66">
     <div class="img">
-      <img src="../../imgs/imgLe6Ji.png" alt />
+      <img src="/imgs/annan/imgLe6Ji.png" alt />
       <img
         src="https://s0.lecuntao.com/mobile_2.3.0/resource/images/index/lct_wap_llj.jpg?date=20190708"
         alt
@@ -15,7 +15,7 @@
           <p>{{data.goods_name}}</p>
           <p>{{data.goods_price}}</p>
         </div>
-        <div class="swiper-slide"><img src="../../imgs/img_le6ji_see_all.png" alt /></div>
+        <div class="swiper-slide"><img src="/imgs/annan/img_le6ji_see_all.png" alt /></div>
       </div>
     </div>
   </div>
@@ -33,22 +33,15 @@ Vue.component(SwipeItem.name, SwipeItem)
 export default {
   data () {
     return {
-      url: [],
       list: []
     }
   },
   mounted () {
-    axios({ url: '/resource/images/index/imgLe6Ji.png?lv=121fc80180' }).then(
-      res => {
-        this.url = res.data
-      }
-    )
     axios({
       url:
         '/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562563317957&act=index&op=index&key='
     }).then(res => {
       this.list = res.data.datas.le6ji.recommend_goods
-      // console.log(this.list);
       this.$nextTick(() => {
         var swiper = new Swiper('.s1', {
           slidesPerView: 3,

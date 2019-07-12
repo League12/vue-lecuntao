@@ -4,7 +4,7 @@
       <p>电器城</p>
       <p @click="tiaoclick">
         更多
-        <img src="../../../imgs/icon_more.png" alt />
+        <img src="/imgs/annan/icon_more.png" alt />
       </p>
     </div>
     <ul class="goods">
@@ -41,7 +41,6 @@ export default {
   },
   methods: {
     tiaoclick () {
-      // console.log(this.datalist)
       this.$router.push(
         `/selectedlist/${JSON.stringify({
           gcid: this.tiaolist[0].cate_info.gc_id,

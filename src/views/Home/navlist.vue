@@ -8,8 +8,7 @@
           :key="data.gc_id"
           @click="handleClick(index)"
           :class="(isActive === index) ? 'active' + index : ''"
-          ref="myactive"
-        >
+          ref="myactive">
           <p>
             <img :src="data.cate_image" alt />
             {{data.cate_name}}
@@ -57,9 +56,7 @@ export default {
       url:
         '/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562577964385&act=index&op=index&key='
     }).then(res => {
-      // console.log(res.data);
       this.datalist = res.data.datas.category
-      //   console.log(this.datalist);
       this.$nextTick(() => {
         var swiper = new Swiper('.navlist', {
           slidesPerView: 5,
@@ -69,12 +66,10 @@ export default {
       })
     })
     window.addEventListener('scroll', this.handleScroll, false)
-    // window.onscroll = this.handleScroll;
   },
 
   methods: {
     handleClick (index) {
-      // console.log(document.documentElement.scrollTop);
       this.isActive = index
       if (index === 1) {
         document.documentElement.scrollTop = 1436
@@ -84,14 +79,11 @@ export default {
         document.documentElement.scrollTop = 2538
       } else if (index === 4) {
         document.documentElement.scrollTop = 3087
+      } else if (index === 0) {
+        document.documentElement.scrollTop = 883
       }
     },
     handleScroll () {
-      // console.log(
-      //   // this.$refs.mynavlist.offsetTop,
-      //   this.$refs.mynavlist,
-      //   document.documentElement.scrollTop
-      // )
       if (
         document.documentElement.scrollTop > 878 &&
         document.documentElement.scrollTop < 1436
@@ -118,7 +110,6 @@ export default {
       ) {
         this.isActive = 4
       }
-      // console.log(this.$refs.myactive);
       if (document.documentElement.scrollTop > 878) {
         this.islist = true
       } else {
@@ -126,9 +117,6 @@ export default {
       }
     }
   }
-  // destroyed() {
-  //   window.onscroll = null;
-  // }
 }
 </script>
 <style lang="scss" scoped>

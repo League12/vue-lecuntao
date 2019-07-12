@@ -20,11 +20,6 @@ export default {
   },
 
   mounted () {
-    // axios.get("/lct?city_id=140100000000&province_id=340&goods_id=625504&key=&api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562581159800&act=mobile_goods_detail&op=getGoodsInfo").then(res => {
-    //
-    //   console.log(res)
-    //
-    // })
     window.addEventListener('scroll', this.backtop, false)
   },
 
@@ -37,7 +32,6 @@ export default {
         this.isHiddenBacktop = false
       }
     }
-
   },
 
   components: {
