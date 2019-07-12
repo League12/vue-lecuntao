@@ -49,10 +49,10 @@ export default {
       )
     }
   },
-    tiaoxiangqing(gcid){
-      this.$router.push(`/goodsdetail/${gcid}`)
-    }
-};
+  tiaoxiangqing (gcid) {
+    this.$router.push(`/goodsdetail/${gcid}`)
+  }
+}
 </script>
 <style lang="scss" scoped>
 .elect {

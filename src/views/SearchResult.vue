@@ -16,7 +16,7 @@
             <li v-for="data in datalist" :key="data.goods_id" @click="goGood(data.goods_id)">
                 <img :src="data.goods_image" alt="">
                 <div>
-                    <h2 v-html="data.goods_name" ></h2>
+                    <h2 v-html="data.goods_name" class="name"></h2>
                     <h3><i></i>{{data.goods_price}}<span>{{data.goods_salenum}}人付款</span></h3>
                 </div>
             </li>
@@ -57,14 +57,14 @@ export default {
       this.loading = true
       this.current++
       axios.post(
-          '/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562728533342&act=goods&op=goodsList',
-          `provinc=110&city=110100000000&keyword=${encodeURIComponent(localStorage.getItem('searchResult'))}&page=${this.current}&coupon_id=&sorted=${this.sorted}&sequence=${this.sequence}&start_price=0&ent_price=0&goods_from=0&key=&store_id=`
-          )
-          .then(res => {
-          this.datalist = [...this.datalist,...res.data.datas.list]
-          this.loading = false;
-      });
-  },
+        '/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562728533342&act=goods&op=goodsList',
+        `provinc=110&city=110100000000&keyword=${encodeURIComponent(localStorage.getItem('searchResult'))}&page=${this.current}&coupon_id=&sorted=${this.sorted}&sequence=${this.sequence}&start_price=0&ent_price=0&goods_from=0&key=&store_id=`
+      )
+        .then(res => {
+          this.datalist = [...this.datalist, ...res.data.datas.list]
+          this.loading = false
+        })
+    },
     goSearch () {
       this.$router.push('/search')
     },
@@ -201,12 +201,11 @@ export default {
                         font-size: .15rem;
                         overflow: hidden;
                         text-overflow: ellipsis;
-                        white-space: nowrap;
-                        word-wrap: break-word;
+                        white-space: wrap;
                         font-weight: normal;
+                        font-style: normal;
                         &>.goods_red{
                             color: #f81234;
-                            font-style: normal;
                         }
                     }
                     &>h3{

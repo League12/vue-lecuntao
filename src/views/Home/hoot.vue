@@ -65,12 +65,12 @@ export default {
         .then(res => {
         // console.log(res.data);
         // console.log(res.data.datas.list);
-        this.datalist = [...this.datalist,...res.data.datas.list]
-        console.log(this.datalist)
-        this.loading = false;
-      });
+          this.datalist = [...this.datalist, ...res.data.datas.list]
+          console.log(this.datalist)
+          this.loading = false
+        })
     },
-    tiaoxiangqing(gcid){
+    tiaoxiangqing (gcid) {
       this.$router.push(`/goodsdetail/${gcid}`)
     }
   }

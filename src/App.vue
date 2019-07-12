@@ -74,5 +74,8 @@ export default {
   input,select,button {
     outline: none;
   }
-
+  .goods_red{
+    color: red;
+    font-style: normal;
+  }
 </style>

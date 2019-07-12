@@ -10,6 +10,7 @@ import City from './views/City'
 import selectedlist from './views/goodslist/selectedlist'
 import Search from './views/Search'
 import SearchResult from './views/SearchResult'
+import Cart from './views/Cart'
 import SearchStore from './views/SearchStore'
 import headerbar from './views/headerbar'
 import setting from './views/Setting'
@@ -74,6 +75,10 @@ export default new Router({
     {
       path: '/searchStore',
       component: SearchStore
+    },
+    {
+      path: '/cart',
+      component: Cart
     },
     {
       path: '/headerbar',
