@@ -75,16 +75,16 @@ export default {
         document.body.scrollTop = 1436
         document.documentElement.scrollTop = 1436
       } else if (index === 2) {
-         document.body.scrollTop = 1987
+        document.body.scrollTop = 1987
         document.documentElement.scrollTop = 1987
       } else if (index === 3) {
-         document.body.scrollTop = 2538
+        document.body.scrollTop = 2538
         document.documentElement.scrollTop = 2538
       } else if (index === 4) {
-         document.body.scrollTop = 3087
+        document.body.scrollTop = 3087
         document.documentElement.scrollTop = 3087
       } else if (index === 0) {
-         document.body.scrollTop = 883
+        document.body.scrollTop = 883
         document.documentElement.scrollTop = 883
       }
     },

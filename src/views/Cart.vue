@@ -49,105 +49,102 @@ export default {
       alllist: [],
       goodslist: [],
       priceAll: 0,
-      priceAll_1:[]
+      priceAll_1: []
     }
   },
   methods: {
-      poi(){
-        for(let i = 0 ; i < this.goodslist.length ; i++){
-          for(let o = 0 ; o < this.goodslist[i].length ; o++){
-            this.priceAll_1.push(this.goodslist[i][o].goods_price*this.goodslist[i][o].goods_num)
-          }
+    poi () {
+      for (let i = 0; i < this.goodslist.length; i++) {
+        for (let o = 0; o < this.goodslist[i].length; o++) {
+          this.priceAll_1.push(this.goodslist[i][o].goods_price * this.goodslist[i][o].goods_num)
         }
-        for(let u = 0 ; u < this.priceAll_1.length ; u++){
-          this.priceAll += this.priceAll_1[u]
-          console.log(this.priceAll)
-        }
-      },
-      red(index,ind) {
-          if (this.datalist[index][ind].goods_num > 1) {
-              this.datalist[index][ind].goods_num -= 1
-          }
-          this.calculate();
-      },
-      add(index,ind) {
-          this.datalist[index][ind].goods_num += 1
-          this.calculate();
-      },
-      qwe(index){
-        let goodChecks = this.$refs[`goodCheck${index}`];
-        let arr = [];
-        for (let i = 0; i < goodChecks.length; i++) {
-          if (goodChecks[i].checked) {
-            arr.push(111);
-          }
-        }
-        this.$refs[`shopCheck${index}`][0].checked = (arr.length === this.datalist[index].length);
-        let arr2 = [];
-        for (let i = 0; i < this.datalist.length; i++) {
-          if (this.$refs[`shopCheck${i}`][0].checked) {
-            arr2.push(222);
-          }
-        }
-        this.isCheck = (arr2.length === this.datalist.length);
-        this.calculate();
-      },
-      handleAllCheck() {
-        for (let i = 0; i < this.datalist.length; i++){
-          this.$refs[`shopCheck${i}`][0].checked = this.isCheck;
-
-          let goodChecks = this.$refs[`goodCheck${i}`];
-
-          for (let j = 0; j < goodChecks.length; j++) {
-            goodChecks[j].checked = this.isCheck;
-          }
-
-        }
-        this.calculate();
-      },
-      handleShopCheck(index) {
-        this.isCheck = (this.alllist.length === this.datalist.length);
-
-        let goodChecks = this.$refs[`goodCheck${index}`];
-
-        for (let i = 0; i < goodChecks.length; i++) {
-          goodChecks[i].checked = this.$refs[`shopCheck${index}`][0].checked
-        }
-        this.calculate();
-      },
-      calculate() {
-        let goods = [];
-        let num = [];
-        let sum = 0;
-        for (let i = 0; i < this.datalist.length; i++) {
-          for (let j = 0; j < this.datalist[i].length; j++) {
-            if (this.$refs[`goodCheck${i}`][j].checked) {
-              goods.push(this.datalist[i][j])
-              num.push(this.$refs[`goodnum${i}`][j].value)
-            }
-          }
-        }
-        // console.log(goods);
-        goods.forEach((good,index) => {
-          sum += good.goods_price * num[index]
-        });
-        console.log(sum);
-        this.priceAll = sum
       }
+      for (let u = 0; u < this.priceAll_1.length; u++) {
+        this.priceAll += this.priceAll_1[u]
+        console.log(this.priceAll)
+      }
+    },
+    red (index, ind) {
+      if (this.datalist[index][ind].goods_num > 1) {
+        this.datalist[index][ind].goods_num -= 1
+      }
+      this.calculate()
+    },
+    add (index, ind) {
+      this.datalist[index][ind].goods_num += 1
+      this.calculate()
+    },
+    qwe (index) {
+      let goodChecks = this.$refs[`goodCheck${index}`]
+      let arr = []
+      for (let i = 0; i < goodChecks.length; i++) {
+        if (goodChecks[i].checked) {
+          arr.push(111)
+        }
+      }
+      this.$refs[`shopCheck${index}`][0].checked = (arr.length === this.datalist[index].length)
+      let arr2 = []
+      for (let i = 0; i < this.datalist.length; i++) {
+        if (this.$refs[`shopCheck${i}`][0].checked) {
+          arr2.push(222)
+        }
+      }
+      this.isCheck = (arr2.length === this.datalist.length)
+      this.calculate()
+    },
+    handleAllCheck () {
+      for (let i = 0; i < this.datalist.length; i++) {
+        this.$refs[`shopCheck${i}`][0].checked = this.isCheck
+
+        let goodChecks = this.$refs[`goodCheck${i}`]
+
+        for (let j = 0; j < goodChecks.length; j++) {
+          goodChecks[j].checked = this.isCheck
+        }
+      }
+      this.calculate()
+    },
+    handleShopCheck (index) {
+      this.isCheck = (this.alllist.length === this.datalist.length)
+
+      let goodChecks = this.$refs[`goodCheck${index}`]
+
+      for (let i = 0; i < goodChecks.length; i++) {
+        goodChecks[i].checked = this.$refs[`shopCheck${index}`][0].checked
+      }
+      this.calculate()
+    },
+    calculate () {
+      let goods = []
+      let num = []
+      let sum = 0
+      for (let i = 0; i < this.datalist.length; i++) {
+        for (let j = 0; j < this.datalist[i].length; j++) {
+          if (this.$refs[`goodCheck${i}`][j].checked) {
+            goods.push(this.datalist[i][j])
+            num.push(this.$refs[`goodnum${i}`][j].value)
+          }
+        }
+      }
+      // console.log(goods);
+      goods.forEach((good, index) => {
+        sum += good.goods_price * num[index]
+      })
+      console.log(sum)
+      this.priceAll = sum
+    }
   },
   mounted () {
-    
     axios.post(
       `/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562824638146`,
       `key=56a25119ce08e04ab90bd53e8c594b51&act=mobile_cart&op=index`
     ).then(res => {
-      this.datalist = res.data.datas.cart;
+      this.datalist = res.data.datas.cart
       this.datalist.forEach((item, index) => {
-        this.datalist[index] = item.goods;
-        this.goodslist[index] = [];
+        this.datalist[index] = item.goods
+        this.goodslist[index] = []
       })
     })
-
   }
 }
 </script>
@@ -220,7 +217,7 @@ export default {
                     top:50%;
                     left: .1rem;
                     transform: translateY(-50%);
-                }   
+                }
             }
             &>ul{
                 &>li{
@@ -274,7 +271,7 @@ export default {
                                 }
                                 &>div:nth-of-type(2){
                                     font-size: .15rem;
-                                    width:.5rem;  
+                                    width:.5rem;
                                     color: #f81234;
                                 }
                             }
@@ -290,11 +287,11 @@ export default {
                                 &>input{
                                     border: 1px solid #ccc;
                                     outline: none;
-                                    width: .4rem;    
+                                    width: .4rem;
                                     height: .32rem;
-                                    line-height: .30rem; 
+                                    line-height: .30rem;
                                     vertical-align: top;
-                                    text-align: center;                     
+                                    text-align: center;
                                 }
                             }
                         }
@@ -354,6 +351,6 @@ export default {
                 line-height: .48rem;
                 text-align: center;
             }
-        }       
+        }
     }
 </style>
