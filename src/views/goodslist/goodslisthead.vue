@@ -19,7 +19,7 @@ export default {
     handleFocus () {
       this.$router.push('/search')
     },
-    handleBtnClick() {
+    handleBtnClick () {
       this.$router.push('/home')
     }
   }

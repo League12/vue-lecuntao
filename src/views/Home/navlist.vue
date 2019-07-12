@@ -72,45 +72,51 @@ export default {
     handleClick (index) {
       this.isActive = index
       if (index === 1) {
+        document.body.scrollTop = 1436
         document.documentElement.scrollTop = 1436
       } else if (index === 2) {
+        document.body.scrollTop = 1987
         document.documentElement.scrollTop = 1987
       } else if (index === 3) {
+        document.body.scrollTop = 2538
         document.documentElement.scrollTop = 2538
       } else if (index === 4) {
+        document.body.scrollTop = 3087
         document.documentElement.scrollTop = 3087
       } else if (index === 0) {
+        document.body.scrollTop = 883
         document.documentElement.scrollTop = 883
       }
     },
     handleScroll () {
+      let scrollTop = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop
       if (
-        document.documentElement.scrollTop > 878 &&
-        document.documentElement.scrollTop < 1436
+        scrollTop > 878 &&
+        scrollTop < 1436
       ) {
         this.isActive = 0
       } else if (
-        document.documentElement.scrollTop > 1436 &&
-        document.documentElement.scrollTop < 1987
+        scrollTop > 1436 &&
+        scrollTop < 1987
       ) {
         this.isActive = 1
       } else if (
-        document.documentElement.scrollTop > 1987 &&
-        document.documentElement.scrollTop < 2538
+        scrollTop > 1987 &&
+        scrollTop < 2538
       ) {
         this.isActive = 2
       } else if (
-        document.documentElement.scrollTop > 2538 &&
-        document.documentElement.scrollTop < 3087
+        scrollTop > 2538 &&
+        scrollTop < 3087
       ) {
         this.isActive = 3
       } else if (
-        document.documentElement.scrollTop > 3087 &&
-        document.documentElement.scrollTop < 3598
+        scrollTop > 3087 &&
+        scrollTop < 3598
       ) {
         this.isActive = 4
       }
-      if (document.documentElement.scrollTop > 878) {
+      if (scrollTop > 878) {
         this.islist = true
       } else {
         this.islist = false

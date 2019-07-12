@@ -36,6 +36,7 @@ export default {
   },
   methods: {
     tiaoclick () {
+      // console.log(this.datalist)
       this.$router.push(`/selectedlist/${JSON.stringify({ 'gcid': this.tiaolist[4].cate_info.gc_id, 'gcname': this.tiaolist[4].cate_info.cate_name })}`)
     },
     tiaoxiangqing (gcid) {

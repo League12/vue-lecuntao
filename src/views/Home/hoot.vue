@@ -58,6 +58,10 @@ export default {
           `provinc=140&city=140100000000&page=${this.current}&pageSize=10`
         )
         .then(res => {
+        // console.log(res.data);
+        // console.log(res.data.datas.list);
+          this.datalist = [...this.datalist, ...res.data.datas.list]
+          console.log(this.datalist)
           this.datalist = [...this.datalist, ...res.data.datas.list]
           this.loading = false
         })
