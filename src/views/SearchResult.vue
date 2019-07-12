@@ -16,7 +16,7 @@
             <li v-for="data in datalist" :key="data.goods_id" @click="goGood(data.goods_id)">
                 <img :src="data.goods_image" alt="">
                 <div>
-                    <h2 v-html="data.goods_name" ></h2>
+                    <h2 v-html="data.goods_name" class="name"></h2>
                     <h3><i></i>{{data.goods_price}}<span>{{data.goods_salenum}}人付款</span></h3>
                 </div>
             </li>
@@ -200,12 +200,11 @@ export default {
                         font-size: .15rem;
                         overflow: hidden;
                         text-overflow: ellipsis;
-                        white-space: nowrap;
-                        word-wrap: break-word;
+                        white-space: wrap;
                         font-weight: normal;
+                        font-style: normal;
                         &>.goods_red{
                             color: #f81234;
-                            font-style: normal;
                         }
                     }
                     &>h3{

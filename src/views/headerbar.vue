@@ -28,7 +28,7 @@ export default {
       this.$router.push('/Location')
     },
     menu () {
-      this.scroll = document.documentElement.scrollTop
+      this.scroll = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop
       // console.log(this.scroll)
       if (this.scroll > 200) {
         this.headerBackground = false

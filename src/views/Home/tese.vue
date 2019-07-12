@@ -41,9 +41,18 @@ export default {
   },
   mounted () {
     axios({
+      url: '/resource/images/index/icon_teseguan.png?lv=46f429c64a'
+    }).then(res => {
+      // console.log(res);
+      this.url = res.data
+    })
+    axios({
       url:
         '/lct?api_version=2.3.0&platType=2&client=wap&isEncry=0&time=1562563317957&act=index&op=index&key='
     }).then(res => {
+      // console.log(res.data.datas.feature.recommend_goods);
+      this.list = res.data.datas.feature.recommend_goods
+      // console.log(this.list);
       this.list = res.data.datas.feature.recommend_goods
       this.$nextTick(() => {
         var swiper = new Swiper('.tesee', {

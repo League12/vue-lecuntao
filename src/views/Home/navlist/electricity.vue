@@ -35,6 +35,7 @@ export default {
       `provinc=${aaa}&city=${bbb}&page=1&pageSize=10`
     ).then(res => {
       this.datalist = res.data.datas.category_goods[0].goods_list
+      // console.log(res.data.datas.category_goods)
       this.tiaolist = res.data.datas.category_goods
     })
   },
