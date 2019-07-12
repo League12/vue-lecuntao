@@ -177,16 +177,17 @@ export default {
                 float: left;
                 background: url(/yzy_imgs/btn_back.png) no-repeat;
                 background-size: .2rem;
+                position: relative;
             }
             &>span:nth-of-type(1){
-                width: .54rem;
-                margin-left: 1.23rem;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
                 text-align: center;
                 font-size: .18rem;
                 line-height: .5rem;
             }
             &>span:nth-of-type(2){
-                width: .78rem;
                 padding-left: .1rem;
                 float: right;
                 font-size: .17rem;
