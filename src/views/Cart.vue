@@ -26,7 +26,7 @@
                   <div>
 
                     <span @click="red(index,ind)">-</span>
-                    <input type="text" name="" id="" :value="dataGoods.goods_num" :ref="'goodnum' + index">
+                    <input type="text" name="" id="" value="1" :ref="'goodnum' + index" disabled>
                     <span @click="add(index,ind)">+</span>
 
                   </div>
@@ -38,7 +38,7 @@
         <footer>
             <div><input type="checkbox" @change="handleAllCheck" v-model="isCheck"><span>全选</span></div>
 
-            <div @click="poi()">去结算</div>
+            <div>去结算</div>
             <div>合计：<span>￥{{priceAll}}</span></div>
 
         </footer>
@@ -62,27 +62,20 @@ export default {
     }
   },
   methods: {
-    poi () {
-      for (let i = 0; i < this.goodslist.length; i++) {
-        for (let o = 0; o < this.goodslist[i].length; o++) {
-          this.priceAll_1.push(this.goodslist[i][o].goods_price * this.goodslist[i][o].goods_num)
-        }
-      }
-      for (let u = 0; u < this.priceAll_1.length; u++) {
-        this.priceAll += this.priceAll_1[u]
-      }
-    },
     red (index, ind) {
-      if (this.datalist[index][ind].goods_num > 1) {
-        this.datalist[index][ind].goods_num -= 1
+      this.$refs[`goodnum${index}`][ind].value = (parseInt(this.$refs[`goodnum${index}`][ind].value) - 1)
+      if (this.$refs[`goodnum${index}`][ind].value <= 0) {
+        this.$refs[`goodnum${index}`][ind].value = 1;
       }
       this.calculate()
     },
     add (index, ind) {
-      this.datalist[index][ind].goods_num += 1
+      this.$refs[`goodnum${index}`][ind].value = (parseInt(this.$refs[`goodnum${index}`][ind].value) + 1)
       this.calculate()
     },
+
     qwe (index) {
+
       let goodChecks = this.$refs[`goodCheck${index}`]
       let arr = []
       for (let i = 0; i < goodChecks.length; i++) {
@@ -100,6 +93,7 @@ export default {
       this.isCheck = (arr2.length === this.datalist.length)
       this.calculate()
     },
+
     handleAllCheck () {
       for (let i = 0; i < this.datalist.length; i++) {
         this.$refs[`shopCheck${i}`][0].checked = this.isCheck
@@ -122,6 +116,7 @@ export default {
       }
       this.calculate()
     },
+
     calculate () {
       let goods = []
       let num = []
@@ -136,10 +131,10 @@ export default {
       }
 
       goods.forEach((good, index) => {
-        sum += good.goods_price * num[index]
+        sum += parseFloat(good.goods_price) * parseFloat(num[index])
       })
 
-      this.priceAll = sum
+      this.priceAll = Math.floor(sum);
     }
 
   },
@@ -274,6 +269,7 @@ export default {
                         }
                         &>div:nth-of-type(1){
                             height: .16rem;
+                            line-height: .16rem;
                             font-size: .098rem;
                             overflow: hidden;
                             color: #999;
@@ -325,7 +321,7 @@ export default {
             width: 100%;
             border-top: 1px solid #ccc;
             position: fixed;
-            bottom: .5rem;
+            bottom: .51rem;
             z-index: 10;
             background: #fff;
             div:nth-of-type(1){
@@ -364,6 +360,7 @@ export default {
                   overflow: hidden;
                   width: .48rem;
                   float: right;
+                  color: #f81234;
                 }
 
             }
